@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-JustTravelItApplication<just-travel-it>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "is2.justtravelit.JustTravelItApplication",
+            "projectName": "just-travel-it",
+            "args": ""
+        }
+    ]
+}
