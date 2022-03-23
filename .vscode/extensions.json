@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "Pivotal.vscode-spring-boot",
+        "vscjava.vscode-java-pack"
+    ]
+}
