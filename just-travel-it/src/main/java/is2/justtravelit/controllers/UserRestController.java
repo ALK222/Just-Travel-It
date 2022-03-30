@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import is2.justtravelit.dtos.UserDTO;
 import is2.justtravelit.services.UserService;
 
-
 @RestController
 public class UserRestController {
 
     @Autowired
     private UserService userService;
-
 
     @PostMapping("/login")
     public ResponseEntity<UserDTO> userLogin(@RequestBody UserDTO userDTO) {
@@ -30,6 +28,22 @@ public class UserRestController {
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/newpassword")
+    public ResponseEntity<UserDTO> userNewPassword(@RequestBody UserDTO userDTO, String newPassword) {
+        userDTO = userService.userValidation(userDTO);
+        if (userDTO != null) {
+            try {
+                userDTO.setPassword(newPassword);
+                return new ResponseEntity<>(userDTO, HttpStatus.ACCEPTED);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
