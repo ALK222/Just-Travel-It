@@ -51,7 +51,7 @@ public class Hotel {
         this.city = city;
     }
 
-    static HotelDTO toDTO(Hotel hotel){
+    public static HotelDTO toDTO(Hotel hotel){
         HotelDTO hotelDTO = new HotelDTO();
         hotelDTO.setName(hotel.getName());
         hotelDTO.setStars(hotel.getStars());

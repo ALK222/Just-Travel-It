@@ -7,12 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.entities.Reservation;
+import is2.justtravelit.entities.User;
 import is2.justtravelit.repositories.ReservationRepository;
+import is2.justtravelit.repositories.UserRepository;
 
 public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     ReservationRepository reservationRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public List<ReservationDTO> getReservationsByUser(String id) {
@@ -30,6 +35,17 @@ public class ReservationServiceImpl implements ReservationService {
          }
         
          return response;
+    }
+
+    @Override
+    public ReservationDTO addReservation(ReservationDTO request, String id) {
+        Reservation reservationToAdd = ReservationDTO.toEntity(request);
+        User user = userRepository.findById(id);
+
+        reservationToAdd.setUser(user);
+        reservationRepository.save(reservationToAdd);       
+         
+        return Reservation.toDTO(reservationToAdd);
     }
     
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import is2.justtravelit.dtos.ReservationDTO;
@@ -21,6 +22,8 @@ public class Reservation {
     Flight returnFlight;
     @OneToOne
     Hotel hotel;
+    @ManyToOne
+    User user;
 
     
 
@@ -56,6 +59,16 @@ public class Reservation {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
+
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public static ReservationDTO toDTO(Reservation reservation){
         ReservationDTO reservationDTO = new ReservationDTO();

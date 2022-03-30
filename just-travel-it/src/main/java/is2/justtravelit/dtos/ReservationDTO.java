@@ -1,6 +1,9 @@
 package is2.justtravelit.dtos;
 
+import javax.persistence.ManyToOne;
+
 import is2.justtravelit.entities.Reservation;
+import is2.justtravelit.entities.User;
 
 public class ReservationDTO {
     
@@ -13,6 +16,7 @@ public class ReservationDTO {
     
     HotelDTO hotel;
 
+    User user;
 
     public ReservationDTO() {
     }
@@ -76,7 +80,17 @@ public class ReservationDTO {
         return this;
     }
 
-    static Reservation toEntity(ReservationDTO reservationDTO){
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public static Reservation toEntity(ReservationDTO reservationDTO){
         Reservation reservation = new Reservation();
         reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getGoFlight()));
         reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getReturnFlight()));
