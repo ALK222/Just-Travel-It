@@ -25,31 +25,36 @@ public class UserServiceImpl implements UserService {
                 return new UserDTO(user.getName());
             }
         }
-        
+
         return null;
-        
+
     }
 
     @Override
     public UserDTO userRegister(UserDTO userDTO) {
-        if(userRepository.findByName(userDTO.getName()) == null){
+        if (userRepository.findByName(userDTO.getName()) == null) {
             userRepository.save(UserDTO.toEntity(userDTO));
             return new UserDTO(userDTO.getName());
         }
-        
+
         return null;
-        
+
     }
 
     @Override
     public List<UserDTO> findAllUsers() {
         List<UserDTO> response = new ArrayList<UserDTO>();
-        for(User user : userRepository.findAll()){
+        for (User user : userRepository.findAll()) {
             response.add(User.toDTO(user));
         }
 
         return response;
-        
+
     }
-    
+
+    @Override
+    public UserDTO changePassword(UserDTO userDTO, String newPassword) {
+        userDTO.setPassword(newPassword);
+    }
+
 }
