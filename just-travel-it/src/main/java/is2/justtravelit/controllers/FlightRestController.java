@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.FlightDTO;
@@ -27,7 +28,7 @@ public class FlightRestController {
     }
 
     @PostMapping("/flights/add")
-    public ResponseEntity<FlightDTO> addFlight(@PathVariable FlightDTO request){
+    public ResponseEntity<FlightDTO> addFlight(@RequestBody FlightDTO request){
         FlightDTO response = flightService.addFlight(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
@@ -39,7 +40,7 @@ public class FlightRestController {
     }
 
     @PostMapping("/flights/update")
-    public ResponseEntity<FlightDTO> updateFlight(@PathVariable FlightDTO request){
+    public ResponseEntity<FlightDTO> updateFlight(@RequestBody FlightDTO request){
         FlightDTO response = flightService.addFlight(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }

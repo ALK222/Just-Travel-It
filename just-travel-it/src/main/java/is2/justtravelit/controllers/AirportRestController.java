@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.services.AirportService;
@@ -23,7 +24,7 @@ public class AirportRestController {
     }
 
     @PostMapping("/Airports/add")
-    public ResponseEntity<AirportDTO> addAirport(@PathVariable AirportDTO request){
+    public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request){
         AirportDTO response = airportService.addAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
@@ -35,7 +36,7 @@ public class AirportRestController {
     }
 
     @PostMapping("/Airports/update")
-    public ResponseEntity<AirportDTO> updateAirport(@PathVariable AirportDTO request){
+    public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request){
         AirportDTO response = airportService.addAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
