@@ -19,7 +19,7 @@ import is2.justtravelit.services.ReservationService;
 public class ReservationRestControler {
     
     @Autowired
-    ReservationService reservationService;
+    private ReservationService reservationService;
 
     @GetMapping("/{id}/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id){

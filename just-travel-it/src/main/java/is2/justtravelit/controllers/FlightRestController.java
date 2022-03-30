@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.FlightDTO;
-import is2.justtravelit.entities.Flight;
 import is2.justtravelit.services.FlightService;
 
 @RestController
 public class FlightRestController {
+
     @Autowired
-    FlightService flightService;
+    private FlightService flightService;
 
     
     @GetMapping("/flights")

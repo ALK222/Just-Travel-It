@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.entities.Reservation;
@@ -11,6 +12,7 @@ import is2.justtravelit.entities.User;
 import is2.justtravelit.repositories.ReservationRepository;
 import is2.justtravelit.repositories.UserRepository;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
@@ -40,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
         Reservation reservationToAdd = ReservationDTO.toEntity(request);
-        User user = userRepository.findById(id);
+        User user = userRepository.findByName(id);
 
         reservationToAdd.setUser(user);
         reservationRepository.save(reservationToAdd);       

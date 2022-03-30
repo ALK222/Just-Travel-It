@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.entities.Flight;
 import is2.justtravelit.repositories.FlightRespository;
 
+@Service
 public class FlightServiceImpl implements FlightService {
 
     @Autowired

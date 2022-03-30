@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.entities.Airport;
 import is2.justtravelit.repositories.AirportRepository;
 
+@Service
 public class AirportServiceImpl implements AirportService {
     @Autowired
     AirportRepository airportRepository;
