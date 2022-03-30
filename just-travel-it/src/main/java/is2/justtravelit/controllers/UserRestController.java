@@ -38,7 +38,7 @@ public class UserRestController {
         userDTO = userService.userValidation(userDTO);
         if (userDTO != null) {
             try {
-                userDTO.setPassword(newPassword);
+                userService.changePassword(userDTO, newPassword);
                 return new ResponseEntity<>(userDTO, HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

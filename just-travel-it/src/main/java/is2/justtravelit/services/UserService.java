@@ -1,10 +1,8 @@
 package is2.justtravelit.services;
 
-
 import java.util.List;
 
 import is2.justtravelit.dtos.UserDTO;
-
 
 public interface UserService {
 
@@ -13,5 +11,7 @@ public interface UserService {
     UserDTO userRegister(UserDTO userDTO);
 
     List<UserDTO> findAllUsers();
-    
+
+    void changePassword(UserDTO userDTO, String newPassword);
+
 }
