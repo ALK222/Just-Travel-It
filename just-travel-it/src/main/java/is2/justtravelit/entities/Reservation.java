@@ -11,7 +11,7 @@ import is2.justtravelit.dtos.ReservationDTO;
 
 @Entity
 public class Reservation {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
@@ -25,8 +25,7 @@ public class Reservation {
     @ManyToOne
     User user;
 
-    
-
+    boolean candeled;
 
     public Integer getId() {
         return this.id;
@@ -60,7 +59,6 @@ public class Reservation {
         this.hotel = hotel;
     }
 
-
     public User getUser() {
         return this.user;
     }
@@ -69,15 +67,22 @@ public class Reservation {
         this.user = user;
     }
 
+    public boolean isCanceled() {
+        return candeled;
+    }
 
-    public static ReservationDTO toDTO(Reservation reservation){
+    public void setCanceled(boolean canceled) {
+        this.candeled = canceled;
+    }
+
+    public static ReservationDTO toDTO(Reservation reservation) {
         ReservationDTO reservationDTO = new ReservationDTO();
         reservationDTO.setGoFlight(Flight.toDTO(reservation.getGoFlight()));
         reservationDTO.setGoFlight(Flight.toDTO(reservation.getReturnFlight()));
         reservationDTO.setHotel(Hotel.toDTO(reservation.getHotel()));
+        reservationDTO.setCanceled(reservation.isCanceled());
 
         return reservationDTO;
     }
-        
 
 }

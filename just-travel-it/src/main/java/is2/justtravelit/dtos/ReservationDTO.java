@@ -1,28 +1,27 @@
 package is2.justtravelit.dtos;
 
-import javax.persistence.ManyToOne;
-
 import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.entities.User;
 
 public class ReservationDTO {
-    
+
     Integer id;
 
-    
     FlightDTO goFlight;
-    
+
     FlightDTO returnFlight;
-    
+
     HotelDTO hotel;
 
     User user;
+
+    boolean canceled;
 
     public ReservationDTO() {
     }
 
     public ReservationDTO(FlightDTO goFlight, FlightDTO returnFlight, HotelDTO hotel) {
-        
+
         this.goFlight = goFlight;
         this.returnFlight = returnFlight;
         this.hotel = hotel;
@@ -80,7 +79,6 @@ public class ReservationDTO {
         return this;
     }
 
-
     public User getUser() {
         return this.user;
     }
@@ -89,12 +87,20 @@ public class ReservationDTO {
         this.user = user;
     }
 
+    public boolean isCanceled() {
+        return this.canceled;
+    }
 
-    public static Reservation toEntity(ReservationDTO reservationDTO){
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
+    }
+
+    public static Reservation toEntity(ReservationDTO reservationDTO) {
         Reservation reservation = new Reservation();
         reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getGoFlight()));
         reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getReturnFlight()));
         reservation.setHotel(HotelDTO.toEntity(reservationDTO.getHotel()));
+        reservation.setCanceled(reservationDTO.isCanceled());
 
         return reservation;
     }
