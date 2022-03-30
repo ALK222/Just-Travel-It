@@ -1,6 +1,5 @@
 package is2.justtravelit.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +24,13 @@ public class UserRestController {
     @PostMapping("/login")
     public ResponseEntity<UserDTO> userLogin(@RequestBody UserDTO userDTO) {
         userDTO = userService.userValidation(userDTO);
-        if (userDTO!=null) {
+        if (userDTO != null) {
             try {
                 return new ResponseEntity<>(userDTO, HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        }else{
+        } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -39,20 +38,20 @@ public class UserRestController {
     @PostMapping("/signup")
     public ResponseEntity<UserDTO> userSignUp(@RequestBody UserDTO userDTO) {
         userDTO = userService.userRegister(userDTO);
-        if (userDTO.getName()!=null) {
+        if (userDTO.getName() != null) {
             try {
                 return new ResponseEntity<>(userDTO, HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        }else{
+        } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/showusers")
-    public ResponseEntity<List<UserDTO>> usersShowAll(){
+    public ResponseEntity<List<UserDTO>> usersShowAll() {
         return new ResponseEntity<List<UserDTO>>(userService.findAllUsers(), HttpStatus.ACCEPTED);
     }
-    
+
 }
