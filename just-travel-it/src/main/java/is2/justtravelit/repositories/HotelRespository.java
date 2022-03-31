@@ -8,4 +8,6 @@ import is2.justtravelit.entities.Hotel;
 @Repository
 public interface HotelRespository extends CrudRepository<Hotel,Integer>{
 
+    void deleteById(Long id);
+
 }

@@ -42,7 +42,7 @@ public class HotelRestController {
     }
 
     @GetMapping("/hotels/delete/{id}")
-    public ResponseEntity<HotelDTO> deleteHotel(@PathVariable Integer id){
+    public ResponseEntity<HotelDTO> deleteHotel(@PathVariable Long id){
         HotelDTO response = hotelService.deleteHotel(id);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }

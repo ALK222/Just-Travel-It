@@ -43,6 +43,7 @@ public class HotelDTO {
 
     public static Hotel toEntity(HotelDTO hotelDTO){
         Hotel hotel = new Hotel();
+        hotel.setId(hotelDTO.getId());
         hotel.setName(hotelDTO.getName());
         hotel.setStars(hotelDTO.getStars());
         hotel.setCity(hotelDTO.getCity());

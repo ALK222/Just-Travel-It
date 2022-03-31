@@ -3,6 +3,8 @@ package is2.justtravelit.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,8 @@ public class HotelServiceImpl implements HotelService  {
     }
 
     @Override
-    public HotelDTO deleteHotel(Integer id) {
+    @Transactional
+    public HotelDTO deleteHotel(Long id) {
         hotelRepository.deleteById(id);
         return null;
     }

@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO changePassword(UserDTO userDTO, String newPassword) {
+    public void changePassword(UserDTO userDTO, String newPassword) {
         userDTO.setPassword(newPassword);
     }
 

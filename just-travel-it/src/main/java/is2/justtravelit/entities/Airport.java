@@ -55,6 +55,7 @@ public class Airport {
 
     public static AirportDTO toDTO(Airport airport) {
         AirportDTO airportDTO = new AirportDTO();
+        airportDTO.setId(airport.getId());
         airportDTO.setName(airport.getName());
         airportDTO.setCod(airport.getCod());
         airportDTO.setCity(airport.getCity());
