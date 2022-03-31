@@ -44,7 +44,6 @@ public class AirportDTO {
 
     public static Airport toEntity(AirportDTO airportDTO) {
         Airport airport = new Airport();
-        airport.setId(airportDTO.getId());
         airport.setName(airportDTO.getName());
         airport.setCod(airportDTO.getCod());
         airport.setCity(airportDTO.getCity());

@@ -1,7 +1,5 @@
 package is2.justtravelit.entities;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 import is2.justtravelit.dtos.UserDTO;

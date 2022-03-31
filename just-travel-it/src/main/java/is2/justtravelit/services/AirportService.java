@@ -8,7 +8,9 @@ public interface AirportService {
     
     public List<AirportDTO> getAirports();
 
-    public AirportDTO deleteAirport(Long id);
+    public AirportDTO deleteAirport(String cod);
 
     public AirportDTO addAirport(AirportDTO request);
+
+    public AirportDTO updateAirport(AirportDTO request);
 }

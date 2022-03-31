@@ -30,8 +30,8 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     @Transactional
-    public AirportDTO deleteAirport(Long id) {
-        airportRepository.deleteById(id);
+    public AirportDTO deleteAirport(String cod) {
+        airportRepository.deleteByCod(cod);
         return null;
     }
 
@@ -39,6 +39,15 @@ public class AirportServiceImpl implements AirportService {
     public AirportDTO addAirport(AirportDTO request) {
         airportRepository.save(AirportDTO.toEntity(request));
         return request;
+    }
+
+    @Override
+    public AirportDTO updateAirport(AirportDTO request) {
+        Airport airportToUpdate = airportRepository.findByCod(request.getCod());
+        airportToUpdate.setCity(request.getCity());
+        airportToUpdate.setName(request.getName());
+        airportRepository.save(airportToUpdate);
+        return request;        
     }
     
 }

@@ -31,15 +31,15 @@ public class AirportRestController {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/Airports/delete/{id}")
-    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable Long id){
-        AirportDTO response = airportService.deleteAirport(id);
+    @GetMapping("/Airports/delete/{cod}")
+    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable String cod){
+        AirportDTO response = airportService.deleteAirport(cod);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/Airports/update")
     public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request){
-        AirportDTO response = airportService.addAirport(request);
+        AirportDTO response = airportService.updateAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }

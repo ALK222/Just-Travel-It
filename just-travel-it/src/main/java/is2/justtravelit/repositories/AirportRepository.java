@@ -11,5 +11,8 @@ import is2.justtravelit.entities.Airport;
 public interface AirportRepository extends CrudRepository<Airport,Integer>{
     List<Airport> findAll();
 
-    void deleteById(Long id);
+    void deleteByCod(String cod);
+
+    Airport findByCod(String cod);
+    
 }

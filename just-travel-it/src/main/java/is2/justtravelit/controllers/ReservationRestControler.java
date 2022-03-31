@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import is2.justtravelit.dtos.ReservationDTO;
-import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.services.ReservationService;
 
 @RestController
