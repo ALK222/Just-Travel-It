@@ -3,6 +3,8 @@ package is2.justtravelit.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,8 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public AirportDTO deleteAirport(Integer id) {
+    @Transactional
+    public AirportDTO deleteAirport(Long id) {
         airportRepository.deleteById(id);
         return null;
     }

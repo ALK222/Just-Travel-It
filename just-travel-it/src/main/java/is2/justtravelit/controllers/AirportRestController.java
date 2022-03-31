@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.services.AirportService;
 
+@RestController
 public class AirportRestController {
     @Autowired
     private AirportService airportService;
@@ -30,7 +32,7 @@ public class AirportRestController {
     }
 
     @GetMapping("/Airports/delete/{id}")
-    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable Integer id){
+    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable Long id){
         AirportDTO response = airportService.deleteAirport(id);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
