@@ -9,3 +9,4 @@ INSERT INTO user (name, password) VALUES
   ('Pikachu', '1234'),
   ('Bulbasaur', 'root'),
   ('Charizard', 'qwerty');
+

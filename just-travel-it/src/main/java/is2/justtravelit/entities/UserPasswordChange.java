@@ -1,37 +1,18 @@
 package is2.justtravelit.entities;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
 import is2.justtravelit.dtos.UserDTO;
 
-@Entity
-public class User {
-
+/** Wrapper class for changes in the password of an user */
+public class UserPasswordChange {
     @Id
     private String name;
     private String password;
-    private String nif;
-    private String email;
-        
+    private String newPassword;
 
     public String getName() {
         return this.name;
-    }
-
-    public String getNif() {
-        return nif;
-    }
-
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setName(String name) {
@@ -46,6 +27,14 @@ public class User {
         this.password = password;
     }
 
+    public String getNewPassword() {
+        return this.newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
     public static UserDTO toDTO(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setName(user.getName());
@@ -54,5 +43,4 @@ public class User {
         userDTO.setEmail(user.getEmail());
         return userDTO;
     }
-
 }
