@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import is2.justtravelit.dtos.FlightDTO;
+import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.entities.User;
@@ -48,6 +50,13 @@ public class ReservationServiceImpl implements ReservationService {
         reservationRepository.save(reservationToAdd);       
          
         return Reservation.toDTO(reservationToAdd);
+    }
+
+    @Override
+    public void modifyReservation(ReservationDTO request, FlightDTO newGoFlight, FlightDTO newReturnFlight, HotelDTO newHotel) {
+        request.setGoFlight(newGoFlight);
+        request.setReturnFlight(newReturnFlight);
+        request.setHotel(newHotel);
     }
     
 }

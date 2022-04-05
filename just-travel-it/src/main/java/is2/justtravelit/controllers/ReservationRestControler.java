@@ -10,9 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import is2.justtravelit.dtos.FlightDTO;
+import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
+import is2.justtravelit.dtos.ReservationModifyDTO;
+import is2.justtravelit.entities.Reservation;
+import is2.justtravelit.repositories.FlightRespository;
+import is2.justtravelit.services.FlightService;
 import is2.justtravelit.services.ReservationService;
+import is2.justtravelit.services.ReservationServiceImpl;
 
 @RestController
 public class ReservationRestControler {
@@ -35,4 +41,30 @@ public class ReservationRestControler {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
     
+    @PostMapping("/{id}/reservations/modify")
+    public ResponseEntity<ReservationDTO> modifyReservation(@PathVariable ReservationModifyDTO reservationModifyDTO){
+        ReservationDTO reservationDTO = reservationService.getReservationsByUser(reservationModifyDTO.getUser());
+        FlightDTO goFlight = reservationService.
+        FlightDTO modGoFlight = new FlightDTO();
+        FlightDTO returnFlight = new FlightDTO();
+        FlightDTO modReturnFlight = new FlightDTO();
+        HotelDTO hotel = new HotelDTO();
+        Hotel
+        reservationDTO.setGoFlight(reservationModifyDTO.getModGoFlight());
+        reservationDTO.setReturnFlight(reservationModifyDTO.getModReturnFlight());
+        reservationDTO.setHotel(reservationModifyDTO.getModHotel());
+        reservationDTO = reservationService.reservationValidation(reservationDTO);
+        if(reservationDTO != null){
+            try{
+                reservationService.modifyReservation(reservationDTO, reservationDTO.getGoFlight(), reservationDTO.getReturnFlight(), reservationDTO.getHotel());
+                return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+            }
+            catch(Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        else{
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
