@@ -11,5 +11,5 @@ public interface HotelService {
 
     public HotelDTO addHotel(HotelDTO request);
 
-    HotelDTO getHotelById(Integer id);
+    HotelDTO getHotelById(long id);
 }

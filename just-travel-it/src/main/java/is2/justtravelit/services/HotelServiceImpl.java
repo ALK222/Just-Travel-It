@@ -43,7 +43,7 @@ public class HotelServiceImpl implements HotelService  {
     }
 
     @Override
-    public HotelDTO getHotelById(Integer id) {
+    public HotelDTO getHotelById(long id) {
         Optional<Hotel> response;
 
         response = hotelRepository.findById(id);
