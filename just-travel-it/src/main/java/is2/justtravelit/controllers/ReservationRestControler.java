@@ -15,14 +15,23 @@ import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.dtos.ReservationModifyDTO;
-import is2.justtravelit.entities.Hotel;
+import is2.justtravelit.services.FlightService;
+import is2.justtravelit.services.HotelService;
 import is2.justtravelit.services.ReservationService;
+import is2.justtravelit.services.UserService;
 
 @RestController
 public class ReservationRestControler {
 
     @Autowired
     private ReservationService reservationService;
+    @Autowired
+    private FlightService flightService;
+    @Autowired
+    private HotelService hotelService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/{id}/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id) {
@@ -40,28 +49,33 @@ public class ReservationRestControler {
     }
 
     @PostMapping("/{id}/reservations/modify")
-    public ResponseEntity<ReservationDTO> modifyReservation(@PathVariable ReservationModifyDTO reservationModifyDTO){
+    public ResponseEntity<ReservationDTO> modifyReservation(@PathVariable ReservationModifyDTO reservationModifyDTO) {
         ReservationDTO reservationDTO = reservationService.getReservationsById(reservationModifyDTO.getId());
-        FlightDTO goFlight = reservationService.
-        FlightDTO modGoFlight = new FlightDTO();
-        FlightDTO returnFlight = new FlightDTO();
-        FlightDTO modReturnFlight = new FlightDTO();
-        HotelDTO hotel = new HotelDTO();
-        Hotel
-        reservationDTO.setGoFlight(reservationModifyDTO.getModGoFlight());
-        reservationDTO.setReturnFlight(reservationModifyDTO.getModReturnFlight());
-        reservationDTO.setHotel(reservationModifyDTO.getModHotel());
-        reservationDTO = reservationService.reservationValidation(reservationDTO);
-        if(reservationDTO != null){
-            try{
-                reservationService.modifyReservation(reservationDTO, reservationDTO.getGoFlight(), reservationDTO.getReturnFlight(), reservationDTO.getHotel());
+        FlightDTO goFlight = flightService.getFlightById(reservationModifyDTO.getGoFlight());
+        FlightDTO returnFlight = flightService.getFlightById(reservationModifyDTO.getModReturnFlight());
+        HotelDTO hotel = hotelService.getHotelById(reservationModifyDTO.getHotel());
+
+        if (reservationDTO != null) {
+            try {
+                if (reservationModifyDTO.isCanceled()) {
+                    reservationDTO.setCanceled(true);
+                }
+                if (reservationModifyDTO.isModGo()) {
+                    goFlight = flightService.getFlightById(reservationModifyDTO.getModGoFlight());
+                }
+                if (reservationModifyDTO.isModReturn()) {
+                    returnFlight = flightService.getFlightById(reservationModifyDTO.getModReturnFlight());
+                }
+                if (reservationModifyDTO.isModH()) {
+                    hotel = hotelService.getHotelById(reservationModifyDTO.getModHotel());
+                }
+                reservationService.modifyReservation(reservationDTO, reservationDTO.getGoFlight(),
+                        reservationDTO.getReturnFlight(), reservationDTO.getHotel());
                 return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        }
-        else{
+        } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
