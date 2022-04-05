@@ -2,6 +2,7 @@ package is2.justtravelit.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,36 +15,33 @@ import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.dtos.ReservationModifyDTO;
-import is2.justtravelit.entities.Reservation;
-import is2.justtravelit.repositories.FlightRespository;
-import is2.justtravelit.services.FlightService;
+import is2.justtravelit.entities.Hotel;
 import is2.justtravelit.services.ReservationService;
-import is2.justtravelit.services.ReservationServiceImpl;
 
 @RestController
 public class ReservationRestControler {
-    
+
     @Autowired
     private ReservationService reservationService;
 
     @GetMapping("/{id}/reservations")
-    public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id){
+    public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id) {
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
         response = reservationService.getReservationsByUser(id);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/{id}/reservations/add")
-    public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id){
+    public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
         ReservationDTO response = new ReservationDTO();
-        response = reservationService.addReservation(request,id);
+        response = reservationService.addReservation(request, id);
 
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
-    
+
     @PostMapping("/{id}/reservations/modify")
     public ResponseEntity<ReservationDTO> modifyReservation(@PathVariable ReservationModifyDTO reservationModifyDTO){
-        ReservationDTO reservationDTO = reservationService.getReservationsByUser(reservationModifyDTO.getUser());
+        ReservationDTO reservationDTO = reservationService.getReservationsById(reservationModifyDTO.getId());
         FlightDTO goFlight = reservationService.
         FlightDTO modGoFlight = new FlightDTO();
         FlightDTO returnFlight = new FlightDTO();
