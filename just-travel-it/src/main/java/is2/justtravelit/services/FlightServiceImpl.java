@@ -20,8 +20,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightDTO> getFlights() {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
-        
-        for(Flight f : flightRepository.findAll()){
+
+        for (Flight f : flightRepository.findAll()) {
             response.add(Flight.toDTO(f));
         }
 
@@ -39,7 +39,7 @@ public class FlightServiceImpl implements FlightService {
         flightRepository.save(FlightDTO.toEntity(request));
         return request;
     }
-    
+
     @Override
     public FlightDTO getFlightById(long id) {
         Optional<Flight> response;
@@ -47,6 +47,6 @@ public class FlightServiceImpl implements FlightService {
         response = flightRepository.findById(id);
 
         return response.isPresent() ? null : Flight.toDTO(response.get());
-    } 
-    
+    }
+
 }

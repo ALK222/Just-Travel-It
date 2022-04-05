@@ -14,15 +14,15 @@ import is2.justtravelit.entities.Hotel;
 import is2.justtravelit.repositories.HotelRespository;
 
 @Service
-public class HotelServiceImpl implements HotelService  {
+public class HotelServiceImpl implements HotelService {
     @Autowired
     HotelRespository hotelRepository;
 
     @Override
     public List<HotelDTO> getHotels() {
         List<HotelDTO> response = new ArrayList<HotelDTO>();
-        
-        for(Hotel f : hotelRepository.findAll()){
+
+        for (Hotel f : hotelRepository.findAll()) {
             response.add(Hotel.toDTO(f));
         }
 
