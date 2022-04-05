@@ -10,4 +10,6 @@ public interface HotelService {
     public HotelDTO deleteHotel(Long id);
 
     public HotelDTO addHotel(HotelDTO request);
+
+    HotelDTO getHotelById(long id);
 }

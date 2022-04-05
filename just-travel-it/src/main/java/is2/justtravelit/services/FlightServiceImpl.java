@@ -2,6 +2,7 @@ package is2.justtravelit.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightDTO> getFlights() {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
-        
-        for(Flight f : flightRepository.findAll()){
+
+        for (Flight f : flightRepository.findAll()) {
             response.add(Flight.toDTO(f));
         }
 
@@ -28,7 +29,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public FlightDTO deleteFlight(Integer id) {
+    public FlightDTO deleteFlight(long id) {
         flightRepository.deleteById(id);
         return null;
     }
@@ -39,5 +40,13 @@ public class FlightServiceImpl implements FlightService {
         return request;
     }
 
-    
+    @Override
+    public FlightDTO getFlightById(long id) {
+        Optional<Flight> response;
+
+        response = flightRepository.findById(id);
+
+        return response.isPresent() ? null : Flight.toDTO(response.get());
+    }
+
 }
