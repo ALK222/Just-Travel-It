@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import is2.justtravelit.entities.Flight;
 
 @Repository
-public interface FlightRespository extends CrudRepository<Flight,Integer>{
+public interface FlightRespository extends CrudRepository<Flight, Integer> {
     List<Flight> findAll();
 }

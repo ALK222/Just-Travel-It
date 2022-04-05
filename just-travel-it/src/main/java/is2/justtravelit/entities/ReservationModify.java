@@ -14,89 +14,89 @@ public class ReservationModify {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    long id;
 
     @OneToOne
-    String goFlight;
+    long goFlight;
     @OneToOne
-    String modGoFlight;
+    long modGoFlight;
     @OneToOne
-    String returnFlight;
+    long returnFlight;
     @OneToOne
-    String modReturnFlight;
+    long modReturnFlight;
     @OneToOne
-    String hotel;
+    long hotel;
     @OneToOne
-    String modHotel;
+    long modHotel;
     @ManyToOne
-    String user;
+    long user;
 
     boolean canceled;
-    boolean modGo;      //COMPROBAR SI SE MODIFICA DESDE EL FRONT
+    boolean modGo; // COMPROBAR SI SE MODIFICA DESDE EL FRONT
     boolean modReturn;
     boolean modH;
 
-    public Integer getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getGoFlight() {
+    public long getGoFlight() {
         return this.goFlight;
     }
 
-    public void setGoFlight(String goFlight) {
+    public void setGoFlight(long goFlight) {
         this.goFlight = goFlight;
     }
 
-    public String getModGoFlight() {
+    public long getModGoFlight() {
         return this.modGoFlight;
     }
 
-    public void setModGoFlight(String modGoFlight) {
+    public void setModGoFlight(long modGoFlight) {
         this.modGoFlight = modGoFlight;
     }
 
-    public String getReturnFlight() {
+    public long getReturnFlight() {
         return this.returnFlight;
     }
 
-    public void setReturnFlight(String returnFlight) {
+    public void setReturnFlight(long returnFlight) {
         this.returnFlight = returnFlight;
     }
 
-    public String getModReturnFlight() {
+    public long getModReturnFlight() {
         return this.modReturnFlight;
     }
 
-    public void setModReturnFlight(String modReturnFlight) {
+    public void setModReturnFlight(long modReturnFlight) {
         this.modReturnFlight = modReturnFlight;
     }
 
-    public String getHotel() {
+    public long getHotel() {
         return this.hotel;
     }
 
-    public void setHotel(String hotel) {
+    public void setHotel(long hotel) {
         this.hotel = hotel;
     }
 
-    public String getModHotel() {
+    public long getModHotel() {
         return this.modHotel;
     }
 
-    public void setModHotel(String modHotel) {
+    public void setModHotel(long modHotel) {
         this.modHotel = modHotel;
     }
 
-    public String getUser() {
+    public long getUser() {
         return this.user;
     }
 
-    public void setUser(String user) {
+    public void setUser(long user) {
         this.user = user;
     }
 
@@ -108,30 +108,29 @@ public class ReservationModify {
         this.canceled = canceled;
     }
 
-    public boolean isModGo(){
+    public boolean isModGo() {
         return modGo;
     }
 
-    public void setModGo(boolean modGo){
+    public void setModGo(boolean modGo) {
         this.modGo = modGo;
     }
 
-    public boolean isModReturn(){
+    public boolean isModReturn() {
         return modReturn;
     }
 
-    public void setModReturn(boolean modReturn){
+    public void setModReturn(boolean modReturn) {
         this.modReturn = modReturn;
     }
 
-    public boolean isModH(){
+    public boolean isModH() {
         return modH;
     }
 
-    public void setModH(boolean modH){
+    public void setModH(boolean modH) {
         this.modH = modH;
     }
-
 
     public static ReservationModifyDTO toDTO(ReservationModify reservationModify) {
         ReservationModifyDTO reservationModifyDTO = new ReservationModifyDTO();
