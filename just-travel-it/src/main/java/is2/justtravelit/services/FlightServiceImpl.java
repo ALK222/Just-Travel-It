@@ -2,6 +2,7 @@ package is2.justtravelit.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,14 @@ public class FlightServiceImpl implements FlightService {
         flightRepository.save(FlightDTO.toEntity(request));
         return request;
     }
+    
+    @Override
+    public FlightDTO getFlightById(Integer id) {
+        Optional<Flight> response;
 
+        response = flightRepository.findById(id);
+
+        return response.isPresent() ? null : Flight.toDTO(response.get());
+    } 
     
 }

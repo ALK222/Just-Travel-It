@@ -13,5 +13,7 @@ public interface FlightService {
     FlightDTO addFlight(FlightDTO request);
 
     FlightDTO deleteFlight(Integer id);
+
+    FlightDTO getFlightById(Integer id);
     
 }
