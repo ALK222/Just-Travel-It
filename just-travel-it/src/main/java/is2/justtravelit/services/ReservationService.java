@@ -16,4 +16,6 @@ public interface ReservationService {
 
     ReservationDTO getReservationsById(Integer id);
 
+    ReservationDTO cancelReservation(ReservationDTO response);
+
 }
