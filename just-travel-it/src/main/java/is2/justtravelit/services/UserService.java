@@ -14,4 +14,6 @@ public interface UserService {
 
     void changePassword(UserDTO userDTO, String newPassword);
 
+    UserDTO deleteUser(String name);
+
 }

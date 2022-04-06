@@ -2,7 +2,6 @@ package is2.justtravelit.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -14,15 +13,15 @@ import is2.justtravelit.entities.Hotel;
 import is2.justtravelit.repositories.HotelRespository;
 
 @Service
-public class HotelServiceImpl implements HotelService {
+public class HotelServiceImpl implements HotelService  {
     @Autowired
     HotelRespository hotelRepository;
 
     @Override
     public List<HotelDTO> getHotels() {
         List<HotelDTO> response = new ArrayList<HotelDTO>();
-
-        for (Hotel f : hotelRepository.findAll()) {
+        
+        for(Hotel f : hotelRepository.findAll()){
             response.add(Hotel.toDTO(f));
         }
 
@@ -40,15 +39,6 @@ public class HotelServiceImpl implements HotelService {
     public HotelDTO addHotel(HotelDTO request) {
         hotelRepository.save(HotelDTO.toEntity(request));
         return request;
-    }
-
-    @Override
-    public HotelDTO getHotelById(long id) {
-        Optional<Hotel> response;
-
-        response = hotelRepository.findById(id);
-
-        return response.isPresent() ? null : Hotel.toDTO(response.get());
     }
 
 }
