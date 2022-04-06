@@ -18,7 +18,6 @@ import is2.justtravelit.dtos.ReservationModifyDTO;
 import is2.justtravelit.services.FlightService;
 import is2.justtravelit.services.HotelService;
 import is2.justtravelit.services.ReservationService;
-import is2.justtravelit.services.UserService;
 
 @RestController
 public class ReservationRestControler {
@@ -29,9 +28,6 @@ public class ReservationRestControler {
     private FlightService flightService;
     @Autowired
     private HotelService hotelService;
-
-    @Autowired
-    private UserService userService;
 
     @GetMapping("/{id}/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id) {
@@ -46,6 +42,26 @@ public class ReservationRestControler {
         response = reservationService.addReservation(request, id);
 
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/{id}/reservation/cancel")
+    public ResponseEntity<ReservationDTO> cancelReservation(@PathVariable String id) {
+        ReservationDTO response = new ReservationDTO();
+        response = reservationService.getReservationsById(Long.parseLong(id));
+        if(response != null)
+        {
+            try {
+                response = reservationService.cancelReservation(response);
+                return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            
+        }
+        else 
+        {
+            return new return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/{id}/reservations/modify")
