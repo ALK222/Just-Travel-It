@@ -53,11 +53,17 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void modifyReservation(ReservationDTO request, FlightDTO newGoFlight, FlightDTO newReturnFlight,
-            HotelDTO newHotel) {
-        request.setGoFlight(newGoFlight);
-        request.setReturnFlight(newReturnFlight);
-        request.setHotel(newHotel);
+    public ReservationDTO modifyReservation(ReservationDTO request) {
+        Optional<Reservation> reservationToUpdate = reservationRepository.findById(request.getId());
+        if (reservationToUpdate.isPresent()) {
+            reservationToUpdate.get().setCanceled(request.isCanceled());
+            reservationToUpdate.get().setGoFlight(FlightDTO.toEntity(request.getGoFlight()));
+            reservationToUpdate.get().setHotel(HotelDTO.toEntity(request.getHotel()));
+            reservationToUpdate.get().setReturnFlight(FlightDTO.toEntity(request.getReturnFlight()));
+            reservationToUpdate.get().setUser(request.getUser());
+            return request;
+        }
+        return null;
     }
 
     @Override
