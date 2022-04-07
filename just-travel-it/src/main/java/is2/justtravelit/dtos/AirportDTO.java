@@ -4,7 +4,7 @@ import is2.justtravelit.entities.Airport;
 
 public class AirportDTO {
 
-    private long id;
+    private Long id;
     private String city;
     private String cod;
     private String name;
@@ -14,7 +14,7 @@ public class AirportDTO {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

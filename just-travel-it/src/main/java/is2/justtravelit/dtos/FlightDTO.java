@@ -4,7 +4,7 @@ import is2.justtravelit.entities.Flight;
 
 public class FlightDTO {
 
-    private long id;
+    private Long id;
     
     private String codigo;
 
@@ -16,11 +16,11 @@ public class FlightDTO {
 
 
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
