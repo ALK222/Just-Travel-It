@@ -61,6 +61,7 @@ public class ReservationServiceImpl implements ReservationService {
             reservationToUpdate.get().setHotel(HotelDTO.toEntity(request.getHotel()));
             reservationToUpdate.get().setReturnFlight(FlightDTO.toEntity(request.getReturnFlight()));
             reservationToUpdate.get().setUser(request.getUser());
+            reservationRepository.save(reservationToUpdate.get());
             return request;
         }
         return null;
