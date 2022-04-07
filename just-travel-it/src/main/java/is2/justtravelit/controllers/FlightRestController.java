@@ -20,27 +20,26 @@ public class FlightRestController {
     @Autowired
     private FlightService flightService;
 
-    
     @GetMapping("/flights")
-    public ResponseEntity<List<FlightDTO>> getFlights(){
+    public ResponseEntity<List<FlightDTO>> getFlights() {
         List<FlightDTO> response = flightService.getFlights();
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/flights/add")
-    public ResponseEntity<FlightDTO> addFlight(@RequestBody FlightDTO request){
+    public ResponseEntity<FlightDTO> addFlight(@RequestBody FlightDTO request) {
         FlightDTO response = flightService.addFlight(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/flights/delete/{id}")
-    public ResponseEntity<FlightDTO> deleteFlight(@PathVariable Integer id){
+    public ResponseEntity<FlightDTO> deleteFlight(@PathVariable Long id) {
         FlightDTO response = flightService.deleteFlight(id);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/flights/update")
-    public ResponseEntity<FlightDTO> updateFlight(@RequestBody FlightDTO request){
+    public ResponseEntity<FlightDTO> updateFlight(@RequestBody FlightDTO request) {
         FlightDTO response = flightService.addFlight(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }

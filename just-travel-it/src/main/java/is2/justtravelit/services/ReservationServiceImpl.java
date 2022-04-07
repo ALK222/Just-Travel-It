@@ -68,7 +68,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO getReservationsById(Integer id) {
+    public ReservationDTO getReservationsById(Long id) {
         Optional<Reservation> response;
 
         response = reservationRepository.findById(id);

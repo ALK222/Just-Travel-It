@@ -12,7 +12,7 @@ public interface ReservationService {
 
     ReservationDTO modifyReservation(ReservationDTO request);
 
-    ReservationDTO getReservationsById(Integer id);
+    ReservationDTO getReservationsById(Long id);
 
     ReservationDTO cancelReservation(ReservationDTO response);
 

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.ReservationDTO;
-import is2.justtravelit.services.FlightService;
-import is2.justtravelit.services.HotelService;
 import is2.justtravelit.services.ReservationService;
 
 @RestController
@@ -21,10 +19,6 @@ public class ReservationRestControler {
 
     @Autowired
     private ReservationService reservationService;
-    @Autowired
-    private FlightService flightService;
-    @Autowired
-    private HotelService hotelService;
 
     @GetMapping("/{id}/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id) {

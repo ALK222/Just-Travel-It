@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import is2.justtravelit.entities.Reservation;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
     List<Reservation> findAllByUser(String id);
-    
+
 }

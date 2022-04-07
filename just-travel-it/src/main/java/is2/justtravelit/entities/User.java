@@ -1,6 +1,7 @@
 package is2.justtravelit.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import is2.justtravelit.dtos.UserDTO;
 
@@ -12,7 +13,6 @@ public class User {
     private String password;
     private String nif;
     private String email;
-        
 
     public String getName() {
         return this.name;

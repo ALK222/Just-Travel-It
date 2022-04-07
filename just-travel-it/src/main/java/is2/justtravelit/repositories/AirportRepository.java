@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import is2.justtravelit.entities.Airport;
 
 @Repository
-public interface AirportRepository extends CrudRepository<Airport,Integer>{
+public interface AirportRepository extends CrudRepository<Airport, Long> {
     List<Airport> findAll();
 
     void deleteByCod(String cod);
 
     Airport findByCod(String cod);
-    
+
 }

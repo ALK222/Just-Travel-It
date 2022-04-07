@@ -14,7 +14,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    Long id;
 
     @OneToOne
     Flight goFlight;
@@ -27,11 +27,11 @@ public class Reservation {
 
     boolean candeled;
 
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
