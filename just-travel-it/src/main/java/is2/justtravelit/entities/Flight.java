@@ -12,7 +12,7 @@ import is2.justtravelit.dtos.FlightDTO;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
     private String codigo;
 
@@ -27,11 +27,11 @@ public class Flight {
     
 
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

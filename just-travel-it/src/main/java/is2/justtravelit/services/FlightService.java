@@ -12,8 +12,8 @@ public interface FlightService {
 
     FlightDTO addFlight(FlightDTO request);
 
-    FlightDTO deleteFlight(long id);
+    FlightDTO deleteFlight(Long id);
 
-    FlightDTO getFlightById(long id);
+    FlightDTO getFlightById(Long id);
     
 }

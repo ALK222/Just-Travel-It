@@ -29,7 +29,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public FlightDTO deleteFlight(long id) {
+    public FlightDTO deleteFlight(Long id) {
         flightRepository.deleteById(id);
         return null;
     }
@@ -41,7 +41,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public FlightDTO getFlightById(long id) {
+    public FlightDTO getFlightById(Long id) {
         Optional<Flight> response;
 
         response = flightRepository.findById(id);

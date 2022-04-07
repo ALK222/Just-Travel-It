@@ -4,21 +4,21 @@ import is2.justtravelit.entities.ReservationModify;
 
 public class ReservationModifyDTO {
 
-    long id;
+    Long id;
 
-    long goFlight;
+    Long goFlight;
 
-    long modGoFlight; // Posible nuveo vuelo de ida
+    Long modGoFlight; // Posible nuveo vuelo de ida
 
-    long returnFlight;
+    Long returnFlight;
 
-    long modReturnFlight; // Posible nuevo vuelo de vuelta
+    Long modReturnFlight; // Posible nuevo vuelo de vuelta
 
-    long hotel;
+    Long hotel;
 
-    long modHotel; // Posible nuevo hotel
+    Long modHotel; // Posible nuevo hotel
 
-    long user;
+    Long user;
 
     boolean canceled;
 
@@ -32,11 +32,12 @@ public class ReservationModifyDTO {
     }
 
     public ReservationModifyDTO(
-            long goFlight,
-            long modGoFlight,
-            long returnFlight,
-            long modReturnFlight,
-            long hotel, long modHotel) {
+            Long goFlight,
+            Long modGoFlight,
+            Long returnFlight,
+            Long modReturnFlight,
+            long hotel,
+            Long modHotel) {
 
         this.goFlight = goFlight;
         this.modGoFlight = modGoFlight;
@@ -46,43 +47,43 @@ public class ReservationModifyDTO {
         this.modHotel = modHotel;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getGoFlight() {
+    public Long getGoFlight() {
         return this.goFlight;
     }
 
-    public void setGoFlight(long goFlight) {
+    public void setGoFlight(Long goFlight) {
         this.goFlight = goFlight;
     }
 
-    public long getModGoFlight() {
+    public Long getModGoFlight() {
         return this.modGoFlight;
     }
 
-    public void setModGoFlight(long modGoFlight) {
+    public void setModGoFlight(Long modGoFlight) {
         this.modGoFlight = modGoFlight;
     }
 
-    public long getReturnFlight() {
+    public Long getReturnFlight() {
         return this.returnFlight;
     }
 
-    public void setReturnFlight(long returnFlight) {
+    public void setReturnFlight(Long returnFlight) {
         this.returnFlight = returnFlight;
     }
 
-    public long getModReturnFlight() {
+    public Long getModReturnFlight() {
         return this.modReturnFlight;
     }
 
-    public void setModReturnFlight(long modReturnFlight) {
+    public void setModReturnFlight(Long modReturnFlight) {
         this.modReturnFlight = modReturnFlight;
     }
 
@@ -90,58 +91,58 @@ public class ReservationModifyDTO {
         return this.hotel;
     }
 
-    public void setHotel(long hotel) {
+    public void setHotel(Long hotel) {
         this.hotel = hotel;
     }
 
-    public long getModHotel() {
+    public Long getModHotel() {
         return this.modHotel;
     }
 
-    public void setModHotel(long modHotel) {
+    public void setModHotel(Long modHotel) {
         this.modHotel = modHotel;
     }
 
-    public ReservationModifyDTO id(Integer id) {
+    public ReservationModifyDTO id(Long id) {
         setId(id);
         return this;
     }
 
-    public ReservationModifyDTO goFlight(long goFlight) {
+    public ReservationModifyDTO goFlight(Long goFlight) {
         setGoFlight(goFlight);
         return this;
     }
 
-    public ReservationModifyDTO modGoFlight(long modGoFlight) {
+    public ReservationModifyDTO modGoFlight(Long modGoFlight) {
         setModGoFlight(modGoFlight);
         return this;
     }
 
-    public ReservationModifyDTO returnFlight(long returnFlight) {
+    public ReservationModifyDTO returnFlight(Long returnFlight) {
         setReturnFlight(returnFlight);
         return this;
     }
 
-    public ReservationModifyDTO modReturnFlight(long modReturnFlight) {
+    public ReservationModifyDTO modReturnFlight(Long modReturnFlight) {
         setModReturnFlight(modReturnFlight);
         return this;
     }
 
-    public ReservationModifyDTO hotel(long hotel) {
+    public ReservationModifyDTO hotel(Long hotel) {
         setHotel(hotel);
         return this;
     }
 
-    public ReservationModifyDTO modHotel(long modHotel) {
+    public ReservationModifyDTO modHotel(Long modHotel) {
         setModHotel(modHotel);
         return this;
     }
 
-    public long getUser() {
+    public Long getUser() {
         return this.user;
     }
 
-    public void setUser(long user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 

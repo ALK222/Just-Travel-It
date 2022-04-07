@@ -3,17 +3,17 @@ package is2.justtravelit.dtos;
 import is2.justtravelit.entities.Hotel;
 
 public class HotelDTO {
-    private long id;
+    private Long id;
 	private String name;
 	private Integer stars;
     private String city;
 
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

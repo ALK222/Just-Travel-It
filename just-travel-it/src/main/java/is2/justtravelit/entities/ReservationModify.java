@@ -14,69 +14,69 @@ public class ReservationModify {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    Long id;
 
     @OneToOne
-    long goFlight;
+    Long goFlight;
     @OneToOne
-    long modGoFlight;
+    Long modGoFlight;
     @OneToOne
-    long returnFlight;
+    Long returnFlight;
     @OneToOne
-    long modReturnFlight;
+    Long modReturnFlight;
     @OneToOne
-    long hotel;
+    Long hotel;
     @OneToOne
-    long modHotel;
+    Long modHotel;
     @ManyToOne
-    long user;
+    Long user;
 
     boolean canceled;
     boolean modGo; // COMPROBAR SI SE MODIFICA DESDE EL FRONT
     boolean modReturn;
     boolean modH;
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getGoFlight() {
+    public Long getGoFlight() {
         return this.goFlight;
     }
 
-    public void setGoFlight(long goFlight) {
+    public void setGoFlight(Long goFlight) {
         this.goFlight = goFlight;
     }
 
-    public long getModGoFlight() {
+    public Long getModGoFlight() {
         return this.modGoFlight;
     }
 
-    public void setModGoFlight(long modGoFlight) {
+    public void setModGoFlight(Long modGoFlight) {
         this.modGoFlight = modGoFlight;
     }
 
-    public long getReturnFlight() {
+    public Long getReturnFlight() {
         return this.returnFlight;
     }
 
-    public void setReturnFlight(long returnFlight) {
+    public void setReturnFlight(Long returnFlight) {
         this.returnFlight = returnFlight;
     }
 
-    public long getModReturnFlight() {
+    public Long getModReturnFlight() {
         return this.modReturnFlight;
     }
 
-    public void setModReturnFlight(long modReturnFlight) {
+    public void setModReturnFlight(Long modReturnFlight) {
         this.modReturnFlight = modReturnFlight;
     }
 
-    public long getHotel() {
+    public Long getHotel() {
         return this.hotel;
     }
 
@@ -84,19 +84,19 @@ public class ReservationModify {
         this.hotel = hotel;
     }
 
-    public long getModHotel() {
+    public Long getModHotel() {
         return this.modHotel;
     }
 
-    public void setModHotel(long modHotel) {
+    public void setModHotel(Long modHotel) {
         this.modHotel = modHotel;
     }
 
-    public long getUser() {
+    public Long getUser() {
         return this.user;
     }
 
-    public void setUser(long user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
