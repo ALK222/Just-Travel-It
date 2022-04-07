@@ -14,6 +14,6 @@ public interface ReservationService {
 
     ReservationDTO getReservationsById(Long id);
 
-    ReservationDTO cancelReservation(ReservationDTO response);
+    ReservationDTO cancelReservation(Long id);
 
 }

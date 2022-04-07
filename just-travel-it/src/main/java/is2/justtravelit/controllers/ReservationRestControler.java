@@ -37,11 +37,9 @@ public class ReservationRestControler {
 
     @PostMapping("/{id}/reservation/cancel")
     public ResponseEntity<ReservationDTO> cancelReservation(@PathVariable String id) {
-        ReservationDTO response = new ReservationDTO();
-        response = reservationService.getReservationsById(Long.parseLong(id));
+        ReservationDTO response = reservationService.cancelReservation(Long.parseLong(id));
         if (response != null) {
             try {
-                response = reservationService.cancelReservation(response);
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

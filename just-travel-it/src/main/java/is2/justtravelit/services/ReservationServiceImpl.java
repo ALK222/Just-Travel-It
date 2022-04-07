@@ -77,9 +77,13 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO cancelReservation(ReservationDTO response) {
-        response.setCanceled(true);
-        return response;
+    public ReservationDTO cancelReservation(Long id) {
+        Optional<Reservation> response = reservationRepository.findById(id);
+        if (response.isPresent()) {
+            response.get().setCanceled(true);
+            return Reservation.toDTO(response.get());
+        }
+        return null;
     }
 
 }
