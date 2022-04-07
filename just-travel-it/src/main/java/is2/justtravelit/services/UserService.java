@@ -12,6 +12,6 @@ public interface UserService {
 
     List<UserDTO> findAllUsers();
 
-    void changePassword(UserDTO userDTO, String newPassword);
+    UserDTO changePassword(UserDTO userDTO);
 
 }
