@@ -3,6 +3,8 @@ package is2.justtravelit.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +57,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changePassword(UserDTO userDTO, String newPassword) {
         userDTO.setPassword(newPassword);
+    }
+
+    @Override
+    @Transactional
+    public UserDTO deleteUser(String name) {
+        userRepository.deleteByName(name);
+        return null;
     }
 
 }

@@ -18,7 +18,6 @@ public class Airport {
 
     @Column(unique=true)
     private String cod;
-
     private String name;
 
 

@@ -12,6 +12,7 @@ import is2.justtravelit.entities.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer>{
     User findByName(String name);
+    void deleteByName(String name);
     List<User> findAll();
        
 }

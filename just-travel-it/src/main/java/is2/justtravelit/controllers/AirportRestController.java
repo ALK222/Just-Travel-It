@@ -19,25 +19,25 @@ public class AirportRestController {
     @Autowired
     private AirportService airportService;
 
-    @GetMapping("/Airports")
+    @GetMapping("/airports")
     public ResponseEntity<List<AirportDTO>> getAirports(){
         List<AirportDTO> response = airportService.getAirports();
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/Airports/add")
+    @PostMapping("/airports/add")
     public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request){
         AirportDTO response = airportService.addAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/Airports/delete/{cod}")
+    @GetMapping("/airports/delete/{cod}")
     public ResponseEntity<AirportDTO> deleteAirport(@PathVariable String cod){
         AirportDTO response = airportService.deleteAirport(cod);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/Airports/update")
+    @PostMapping("/airports/update")
     public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request){
         AirportDTO response = airportService.updateAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
