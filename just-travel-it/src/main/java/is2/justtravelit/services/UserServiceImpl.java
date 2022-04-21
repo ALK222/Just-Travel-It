@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.UserDTO;
 import is2.justtravelit.entities.User;
+import is2.justtravelit.mappers.UserDTOToEntityMapper;
 import is2.justtravelit.repositories.UserRepository;
 
 @Service
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO userRegister(UserDTO userDTO) {
         if (userRepository.findByName(userDTO.getName()) == null) {
-            userRepository.save(UserDTO.toEntity(userDTO));
+            userRepository.save(UserDTOToEntityMapper.mapUserDTOToUser(userDTO));
             return new UserDTO(userDTO.getName());
         }
 

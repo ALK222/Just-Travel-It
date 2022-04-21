@@ -1,7 +1,5 @@
 package is2.justtravelit.dtos;
 
-import is2.justtravelit.entities.Flight;
-
 public class FlightDTO {
 
     private Long id;
@@ -69,14 +67,6 @@ public class FlightDTO {
         this.aeropuertoLlegada = aeropuertoLlegada;
     }
 
-    public static Flight toEntity(FlightDTO flightDTO) {
-        Flight flight = new Flight();
-        flight.setCodigo(flightDTO.getCodigo());
-        flight.setFechaSalida(flightDTO.getFechaSalida());
-        flight.setFechaLlegada(flightDTO.getFechaLlegada());
-        flight.setAeropuertoSalida(AirportDTO.toEntity(flightDTO.getAeropuertoSalida()));
-        flight.setAeropuertoLlegada(AirportDTO.toEntity(flightDTO.getAeropuertoLlegada()));
-        return flight;
-    }
+    
 
 }

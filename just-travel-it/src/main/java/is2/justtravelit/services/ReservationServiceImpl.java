@@ -7,11 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import is2.justtravelit.dtos.FlightDTO;
-import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.entities.User;
+import is2.justtravelit.mappers.FlightDTOToEntityMapper;
+import is2.justtravelit.mappers.HotelDTOToEntityMapper;
+import is2.justtravelit.mappers.ReservationDTOToEntityMapper;
 import is2.justtravelit.repositories.ReservationRepository;
 import is2.justtravelit.repositories.UserRepository;
 
@@ -43,7 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
-        Reservation reservationToAdd = ReservationDTO.toEntity(request);
+        Reservation reservationToAdd = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
         User user = userRepository.findByName(id);
 
         reservationToAdd.setUser(user);
@@ -57,9 +58,9 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<Reservation> reservationToUpdate = reservationRepository.findById(request.getId());
         if (reservationToUpdate.isPresent()) {
             reservationToUpdate.get().setCanceled(request.isCanceled());
-            reservationToUpdate.get().setGoFlight(FlightDTO.toEntity(request.getGoFlight()));
-            reservationToUpdate.get().setHotel(HotelDTO.toEntity(request.getHotel()));
-            reservationToUpdate.get().setReturnFlight(FlightDTO.toEntity(request.getReturnFlight()));
+            reservationToUpdate.get().setGoFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getGoFlight()));
+            reservationToUpdate.get().setHotel(HotelDTOToEntityMapper.mapHotelDTOToHotel(request.getHotel()));
+            reservationToUpdate.get().setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
             reservationToUpdate.get().setUser(request.getUser());
             reservationRepository.save(reservationToUpdate.get());
             return request;

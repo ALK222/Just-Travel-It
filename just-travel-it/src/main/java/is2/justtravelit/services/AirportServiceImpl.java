@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.entities.Airport;
+import is2.justtravelit.mappers.AirportDTOToEntityMapper;
 import is2.justtravelit.repositories.AirportRepository;
 
 @Service
@@ -37,7 +38,7 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public AirportDTO addAirport(AirportDTO request) {
-        airportRepository.save(AirportDTO.toEntity(request));
+        airportRepository.save(AirportDTOToEntityMapper.mapAirportDTOToAirport(request));
         return request;
     }
 

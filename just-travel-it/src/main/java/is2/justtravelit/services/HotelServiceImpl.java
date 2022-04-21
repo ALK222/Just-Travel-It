@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.entities.Hotel;
+import is2.justtravelit.mappers.HotelDTOToEntityMapper;
 import is2.justtravelit.repositories.HotelRespository;
 
 @Service
@@ -38,7 +39,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public HotelDTO addHotel(HotelDTO request) {
-        hotelRepository.save(HotelDTO.toEntity(request));
+        hotelRepository.save(HotelDTOToEntityMapper.mapHotelDTOToHotel(request));
         return request;
     }
 

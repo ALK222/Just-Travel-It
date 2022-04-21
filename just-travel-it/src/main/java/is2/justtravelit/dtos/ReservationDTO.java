@@ -1,6 +1,5 @@
 package is2.justtravelit.dtos;
 
-import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.entities.User;
 
 public class ReservationDTO {
@@ -95,13 +94,5 @@ public class ReservationDTO {
         this.canceled = canceled;
     }
 
-    public static Reservation toEntity(ReservationDTO reservationDTO) {
-        Reservation reservation = new Reservation();
-        reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getGoFlight()));
-        reservation.setGoFlight(FlightDTO.toEntity(reservationDTO.getReturnFlight()));
-        reservation.setHotel(HotelDTO.toEntity(reservationDTO.getHotel()));
-        reservation.setCanceled(reservationDTO.isCanceled());
-
-        return reservation;
-    }
+    
 }

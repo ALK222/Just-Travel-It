@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.entities.Flight;
+import is2.justtravelit.mappers.FlightDTOToEntityMapper;
 import is2.justtravelit.repositories.FlightRespository;
 
 @Service
@@ -36,7 +37,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public FlightDTO addFlight(FlightDTO request) {
-        flightRepository.save(FlightDTO.toEntity(request));
+        flightRepository.save(FlightDTOToEntityMapper.mapFlightDTOToFlight(request));
         return request;
     }
 

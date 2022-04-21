@@ -1,7 +1,5 @@
 package is2.justtravelit.dtos;
 
-import is2.justtravelit.entities.Hotel;
-
 public class HotelDTO {
     private Long id;
 	private String name;
@@ -41,12 +39,5 @@ public class HotelDTO {
         this.city = city;
     }
 
-    public static Hotel toEntity(HotelDTO hotelDTO){
-        Hotel hotel = new Hotel();
-        hotel.setId(hotelDTO.getId());
-        hotel.setName(hotelDTO.getName());
-        hotel.setStars(hotelDTO.getStars());
-        hotel.setCity(hotelDTO.getCity());
-        return hotel;
-    }
+    
 }
