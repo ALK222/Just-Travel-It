@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,25 +22,25 @@ public class AirportRestController {
     private AirportService airportService;
 
     @GetMapping("/Airports")
-    public ResponseEntity<List<AirportDTO>> getAirports(){
+    public ResponseEntity<List<AirportDTO>> getAirports() {
         List<AirportDTO> response = airportService.getAirports();
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/Airports/add")
-    public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request){
+    @PostMapping("/Airports")
+    public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request) {
         AirportDTO response = airportService.addAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/Airports/delete/{cod}")
-    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable String cod){
+    @DeleteMapping("/Airports")
+    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable String cod) {
         AirportDTO response = airportService.deleteAirport(cod);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/Airports/update")
-    public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request){
+    @PutMapping("/Airports")
+    public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request) {
         AirportDTO response = airportService.updateAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
