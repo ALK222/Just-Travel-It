@@ -30,7 +30,7 @@ public class AirportRestController {
     @PostMapping("/Airports")
     public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request) {
         AirportDTO response = airportService.addAirport(request);
-        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/Airports")

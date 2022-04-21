@@ -1,20 +1,12 @@
 package is2.justtravelit.dtos;
 
 public class HotelDTO {
-    private Long id;
 	private String name;
 	private Integer stars;
     private String city;
 
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
     public String getName() {
         return this.name;
     }

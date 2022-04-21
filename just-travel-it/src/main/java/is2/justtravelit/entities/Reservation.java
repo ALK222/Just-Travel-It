@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import is2.justtravelit.dtos.ReservationDTO;
+import is2.justtravelit.mappers.FlightEntityToDTOMapper;
+import is2.justtravelit.mappers.HotelEntityToDTOMapper;
 
 @Entity
 public class Reservation {
@@ -77,9 +79,9 @@ public class Reservation {
 
     public static ReservationDTO toDTO(Reservation reservation) {
         ReservationDTO reservationDTO = new ReservationDTO();
-        reservationDTO.setGoFlight(Flight.toDTO(reservation.getGoFlight()));
-        reservationDTO.setGoFlight(Flight.toDTO(reservation.getReturnFlight()));
-        reservationDTO.setHotel(Hotel.toDTO(reservation.getHotel()));
+        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getGoFlight()));
+        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getReturnFlight()));
+        reservationDTO.setHotel(HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(reservation.getHotel()));
         reservationDTO.setCanceled(reservation.isCanceled());
 
         return reservationDTO;

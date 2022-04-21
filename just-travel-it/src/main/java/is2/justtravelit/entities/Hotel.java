@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import is2.justtravelit.dtos.HotelDTO;
 
 @Entity
 public class Hotel {
@@ -51,12 +50,5 @@ public class Hotel {
         this.city = city;
     }
 
-    public static HotelDTO toDTO(Hotel hotel){
-        HotelDTO hotelDTO = new HotelDTO();
-        hotelDTO.setId(hotel.getId());
-        hotelDTO.setName(hotel.getName());
-        hotelDTO.setStars(hotel.getStars());
-        hotelDTO.setCity(hotel.getCity());
-        return hotelDTO;
-    }
+    
 }

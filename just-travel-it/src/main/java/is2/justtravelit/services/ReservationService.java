@@ -10,7 +10,7 @@ public interface ReservationService {
 
     ReservationDTO addReservation(ReservationDTO request, String id);
 
-    ReservationDTO modifyReservation(ReservationDTO request);
+    ReservationDTO modifyReservation(ReservationDTO request, String id);
 
     ReservationDTO getReservationsById(Long id);
 

@@ -2,7 +2,6 @@ package is2.justtravelit.dtos;
 
 public class FlightDTO {
 
-    private Long id;
     
     private String codigo;
 
@@ -14,13 +13,7 @@ public class FlightDTO {
 
 
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     public String getCodigo() {
         return this.codigo;

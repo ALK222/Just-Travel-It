@@ -4,7 +4,7 @@ import is2.justtravelit.entities.User;
 
 public class ReservationDTO {
 
-    Long id;
+    
 
     FlightDTO goFlight;
 
@@ -26,14 +26,7 @@ public class ReservationDTO {
         this.hotel = hotel;
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
     public FlightDTO getGoFlight() {
         return this.goFlight;
     }
@@ -58,10 +51,7 @@ public class ReservationDTO {
         this.hotel = hotel;
     }
 
-    public ReservationDTO id(Long id) {
-        setId(id);
-        return this;
-    }
+    
 
     public ReservationDTO goFlight(FlightDTO goFlight) {
         setGoFlight(goFlight);

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.entities.Hotel;
 import is2.justtravelit.mappers.HotelDTOToEntityMapper;
+import is2.justtravelit.mappers.HotelEntityToDTOMapper;
 import is2.justtravelit.repositories.HotelRespository;
 
 @Service
@@ -24,7 +25,7 @@ public class HotelServiceImpl implements HotelService {
         List<HotelDTO> response = new ArrayList<HotelDTO>();
 
         for (Hotel f : hotelRepository.findAll()) {
-            response.add(Hotel.toDTO(f));
+            response.add(HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(f));
         }
 
         return response;
@@ -49,7 +50,7 @@ public class HotelServiceImpl implements HotelService {
 
         response = hotelRepository.findById(id);
 
-        return response.isPresent() ? null : Hotel.toDTO(response.get());
+        return response.isPresent() ? null : HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(response.get());
     }
 
 }

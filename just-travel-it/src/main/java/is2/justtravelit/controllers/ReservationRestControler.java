@@ -52,8 +52,8 @@ public class ReservationRestControler {
     }
 
     @PostMapping("/{id}/reservations/modify")
-    public ResponseEntity<ReservationDTO> modifyReservation(@RequestBody ReservationDTO reservationDTO) {
-        ReservationDTO response = reservationService.modifyReservation(reservationDTO);
+    public ResponseEntity<ReservationDTO> modifyReservation(@RequestBody ReservationDTO reservationDTO, String id) {
+        ReservationDTO response = reservationService.modifyReservation(reservationDTO, id);
         if (reservationDTO != null) {
             try {
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);

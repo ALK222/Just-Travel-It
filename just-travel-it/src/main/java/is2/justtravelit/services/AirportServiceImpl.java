@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.entities.Airport;
 import is2.justtravelit.mappers.AirportDTOToEntityMapper;
+import is2.justtravelit.mappers.AirportEntityToDTOMapper;
 import is2.justtravelit.repositories.AirportRepository;
 
 @Service
@@ -23,7 +24,7 @@ public class AirportServiceImpl implements AirportService {
         List<AirportDTO> response = new ArrayList<AirportDTO>();
         
         for(Airport f : airportRepository.findAll()){
-            response.add(Airport.toDTO(f));
+            response.add(AirportEntityToDTOMapper.mapAirportToAirportDTO(f));
         }
 
         return response;

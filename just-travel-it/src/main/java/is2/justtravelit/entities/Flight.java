@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import is2.justtravelit.dtos.FlightDTO;
-
 @Entity
 public class Flight {
     @Id
@@ -75,14 +73,6 @@ public class Flight {
         this.aeropuertoLlegada = aeropuertoLlegada;
     }
 
-    public static FlightDTO toDTO(Flight flight) {
-        FlightDTO flightDTO = new FlightDTO();
-        flightDTO.setCodigo(flight.getCodigo());
-        flightDTO.setFechaSalida(flight.getFechaSalida());
-        flightDTO.setFechaLlegada(flight.getFechaLlegada());
-        flightDTO.setAeropuertoSalida(Airport.toDTO(flight.getAeropuertoSalida()));
-        flightDTO.setAeropuertoLlegada(Airport.toDTO(flight.getAeropuertoLlegada()));
-        return flightDTO;
-    }
+    
 
 }

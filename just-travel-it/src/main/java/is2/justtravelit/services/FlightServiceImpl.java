@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.entities.Flight;
 import is2.justtravelit.mappers.FlightDTOToEntityMapper;
+import is2.justtravelit.mappers.FlightEntityToDTOMapper;
 import is2.justtravelit.repositories.FlightRespository;
 
 @Service
@@ -23,7 +24,7 @@ public class FlightServiceImpl implements FlightService {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
 
         for (Flight f : flightRepository.findAll()) {
-            response.add(Flight.toDTO(f));
+            response.add(FlightEntityToDTOMapper.mapFlightToFlightDTO(f));
         }
 
         return response;
@@ -41,13 +42,15 @@ public class FlightServiceImpl implements FlightService {
         return request;
     }
 
+    
+
     @Override
     public FlightDTO getFlightById(Long id) {
-        Optional<Flight> response;
+         Optional<Flight> response;
 
-        response = flightRepository.findById(id);
+         response = flightRepository.findById(id);
 
-        return response.isPresent() ? null : Flight.toDTO(response.get());
+         return response.isPresent() ? null :FlightEntityToDTOMapper.mapFlightToFlightDTO(response.get());
     }
 
 }
