@@ -31,8 +31,8 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public FlightDTO deleteFlight(Long id) {
-        flightRepository.deleteById(id);
+    public FlightDTO deleteFlight(FlightDTO request) {
+        flightRepository.deleteByCod(request.getCodigo());
         return null;
     }
 
@@ -42,15 +42,13 @@ public class FlightServiceImpl implements FlightService {
         return request;
     }
 
-    
-
     @Override
     public FlightDTO getFlightById(Long id) {
-         Optional<Flight> response;
+        Optional<Flight> response;
 
-         response = flightRepository.findById(id);
+        response = flightRepository.findById(id);
 
-         return response.isPresent() ? null :FlightEntityToDTOMapper.mapFlightToFlightDTO(response.get());
+        return response.isPresent() ? null : FlightEntityToDTOMapper.mapFlightToFlightDTO(response.get());
     }
 
 }

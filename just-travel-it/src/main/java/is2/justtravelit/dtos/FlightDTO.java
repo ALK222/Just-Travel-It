@@ -2,18 +2,13 @@ package is2.justtravelit.dtos;
 
 public class FlightDTO {
 
-    
     private String codigo;
 
     private java.sql.Date fechaSalida;
     private java.sql.Date fechaLlegada;
 
-    private AirportDTO aeropuertoSalida;    
+    private AirportDTO aeropuertoSalida;
     private AirportDTO aeropuertoLlegada;
-
-
-
-    
 
     public String getCodigo() {
         return this.codigo;
@@ -39,8 +34,6 @@ public class FlightDTO {
         this.fechaLlegada = fechaLlegada;
     }
 
-
-
     public AirportDTO getAeropuertoSalida() {
         return this.aeropuertoSalida;
     }
@@ -48,18 +41,13 @@ public class FlightDTO {
     public void setAeropuertoSalida(AirportDTO aeropuertoSalia) {
         this.aeropuertoSalida = aeropuertoSalia;
     }
-   
 
     public AirportDTO getAeropuertoLlegada() {
         return this.aeropuertoLlegada;
     }
 
-    
-
     public void setAeropuertoLlegada(AirportDTO aeropuertoLlegada) {
         this.aeropuertoLlegada = aeropuertoLlegada;
     }
-
-    
 
 }
