@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,25 +20,25 @@ public class AirportRestController {
     @Autowired
     private AirportService airportService;
 
-    @GetMapping("/Airports")
+    @GetMapping("/airports")
     public ResponseEntity<List<AirportDTO>> getAirports() {
         List<AirportDTO> response = airportService.getAirports();
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/Airports")
+    @PostMapping("/airports")
     public ResponseEntity<AirportDTO> addAirport(@RequestBody AirportDTO request) {
         AirportDTO response = airportService.addAirport(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/Airports")
-    public ResponseEntity<AirportDTO> deleteAirport(@PathVariable String cod) {
-        AirportDTO response = airportService.deleteAirport(cod);
+    @DeleteMapping("/airports")
+    public ResponseEntity<AirportDTO> deleteAirport(@RequestBody AirportDTO request) {
+        AirportDTO response = airportService.deleteAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PutMapping("/Airports")
+    @PutMapping("/airports")
     public ResponseEntity<AirportDTO> updateAirport(@RequestBody AirportDTO request) {
         AirportDTO response = airportService.updateAirport(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);

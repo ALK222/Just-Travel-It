@@ -22,8 +22,8 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public List<AirportDTO> getAirports() {
         List<AirportDTO> response = new ArrayList<AirportDTO>();
-        
-        for(Airport f : airportRepository.findAll()){
+
+        for (Airport f : airportRepository.findAll()) {
             response.add(AirportEntityToDTOMapper.mapAirportToAirportDTO(f));
         }
 
@@ -32,8 +32,8 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     @Transactional
-    public AirportDTO deleteAirport(String cod) {
-        airportRepository.deleteByCod(cod);
+    public AirportDTO deleteAirport(AirportDTO request) {
+        airportRepository.deleteByCod(request.getCod());
         return null;
     }
 
@@ -49,7 +49,7 @@ public class AirportServiceImpl implements AirportService {
         airportToUpdate.setCity(request.getCity());
         airportToUpdate.setName(request.getName());
         airportRepository.save(airportToUpdate);
-        return request;        
+        return request;
     }
-    
+
 }
