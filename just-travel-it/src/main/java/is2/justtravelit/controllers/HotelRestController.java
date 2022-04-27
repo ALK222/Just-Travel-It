@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.HotelDTO;
-import is2.justtravelit.entities.Hotel;
-import is2.justtravelit.mappers.HotelDTOToEntityMapper;
 import is2.justtravelit.services.HotelService;
 
 @RestController
@@ -46,8 +44,7 @@ public class HotelRestController {
 
     @DeleteMapping("/hotels")
     public ResponseEntity<HotelDTO> deleteHotel(@RequestBody HotelDTO request) {
-        Hotel r = HotelDTOToEntityMapper.mapHotelDTOToHotel(request);
-        HotelDTO response = hotelService.deleteHotel(r.getId());
+        HotelDTO response = hotelService.deleteHotel(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 

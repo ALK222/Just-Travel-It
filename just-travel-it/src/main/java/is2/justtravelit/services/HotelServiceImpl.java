@@ -34,7 +34,8 @@ public class HotelServiceImpl implements HotelService {
     @Override
     @Transactional
     public HotelDTO deleteHotel(HotelDTO request) {
-        hotelRepository.deleteById(request.getID());
+        Hotel deletedEntity = HotelDTOToEntityMapper.mapHotelDTOToHotel(request);
+        hotelRepository.deleteById(deletedEntity.getId());
         return null;
     }
 
