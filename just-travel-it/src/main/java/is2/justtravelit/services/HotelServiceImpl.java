@@ -33,8 +33,8 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     @Transactional
-    public HotelDTO deleteHotel(Long id) {
-        hotelRepository.deleteById(id);
+    public HotelDTO deleteHotel(HotelDTO request) {
+        hotelRepository.deleteById(request.getID());
         return null;
     }
 
