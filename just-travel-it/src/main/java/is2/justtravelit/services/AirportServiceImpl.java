@@ -33,7 +33,8 @@ public class AirportServiceImpl implements AirportService {
     @Override
     @Transactional
     public AirportDTO deleteAirport(AirportDTO request) {
-        airportRepository.deleteByCod(request.getCod());
+        Airport deletedEntity = AirportDTOToEntityMapper.mapAirportDTOToAirport(request);
+        airportRepository.deleteById(deletedEntity.getId());
         return null;
     }
 
