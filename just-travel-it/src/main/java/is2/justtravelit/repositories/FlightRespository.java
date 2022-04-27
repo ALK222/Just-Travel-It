@@ -11,5 +11,5 @@ import is2.justtravelit.entities.Flight;
 public interface FlightRespository extends CrudRepository<Flight, Long> {
     List<Flight> findAll();
 
-    void deleteByCod(String cod);
+    void deleteByID(Long id);
 }

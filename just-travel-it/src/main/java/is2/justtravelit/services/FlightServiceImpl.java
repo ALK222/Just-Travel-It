@@ -32,7 +32,8 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public FlightDTO deleteFlight(FlightDTO request) {
-        flightRepository.deleteByCod(request.getCodigo());
+        Flight deletedEntity = FlightDTOToEntityMapper.mapFlightDTOToFlight(request);
+        flightRepository.deleteByID(deletedEntity.getId());
         return null;
     }
 
