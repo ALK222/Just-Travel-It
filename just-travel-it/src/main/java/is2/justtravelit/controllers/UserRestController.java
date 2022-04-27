@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +34,7 @@ public class UserRestController {
         }
     }
 
-    @PostMapping("/newpassword")
+    @PutMapping("/user/newpassword")
     public ResponseEntity<UserDTO> userNewPassword(@RequestBody UserDTO userDTO) {
         UserDTO response = userService.changePassword(userDTO);
         if (response != null) {
@@ -62,7 +63,7 @@ public class UserRestController {
         }
     }
 
-    @GetMapping("/showusers")
+    @GetMapping("/users")
     public ResponseEntity<List<UserDTO>> usersShowAll() {
         return new ResponseEntity<List<UserDTO>>(userService.findAllUsers(), HttpStatus.ACCEPTED);
     }

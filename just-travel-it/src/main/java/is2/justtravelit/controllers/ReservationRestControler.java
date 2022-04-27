@@ -9,10 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.ReservationDTO;
+import is2.justtravelit.dtos.UserDTO;
+import is2.justtravelit.entities.User;
+import is2.justtravelit.mappers.UserDTOToEntityMapper;
 import is2.justtravelit.services.ReservationService;
 
 @RestController
@@ -21,14 +25,15 @@ public class ReservationRestControler {
     @Autowired
     private ReservationService reservationService;
 
-    @GetMapping("/{id}/reservations")
-    public ResponseEntity<List<ReservationDTO>> getReservations(@PathVariable String id) {
+    @GetMapping("/reservations")
+    public ResponseEntity<List<ReservationDTO>> getReservations(@RequestBody UserDTO request) {
+        User userEntity = UserDTOToEntityMapper.mapUserDTOToUser(request);
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
-        response = reservationService.getReservationsByUser(id);
+        response = reservationService.getReservationsByUser(userEntity.getNif());
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/{id}/reservations/add")
+    @PostMapping("/reservations")
     public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
         ReservationDTO response = new ReservationDTO();
         response = reservationService.addReservation(request, id);
@@ -36,9 +41,9 @@ public class ReservationRestControler {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/{id}/reservation/cancel")
-    public ResponseEntity<ReservationDTO> cancelReservation(@PathVariable String id) {
-        ReservationDTO response = reservationService.cancelReservation(Long.parseLong(id));
+    @PutMapping("/reservation/cancel")
+    public ResponseEntity<ReservationDTO> cancelReservation(@RequestBody ReservationDTO request) {
+        ReservationDTO response = reservationService.cancelReservation(request);
         if (response != null) {
             try {
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
@@ -51,10 +56,10 @@ public class ReservationRestControler {
         }
     }
 
-    @PostMapping("/{id}/reservations/modify")
-    public ResponseEntity<ReservationDTO> modifyReservation(@RequestBody ReservationDTO reservationDTO, String id) {
-        ReservationDTO response = reservationService.modifyReservation(reservationDTO, id);
-        if (reservationDTO != null) {
+    @PutMapping("/reservations")
+    public ResponseEntity<ReservationDTO> modifyReservation(@RequestBody ReservationDTO request) {
+        ReservationDTO response = reservationService.modifyReservation(request);
+        if (request != null) {
             try {
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
             } catch (Exception e) {
