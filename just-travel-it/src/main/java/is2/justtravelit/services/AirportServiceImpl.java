@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.entities.Airport;
+import is2.justtravelit.mappers.AirportDTOToEntityMapper;
+import is2.justtravelit.mappers.AirportEntityToDTOMapper;
 import is2.justtravelit.repositories.AirportRepository;
 
 @Service
@@ -20,9 +22,9 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public List<AirportDTO> getAirports() {
         List<AirportDTO> response = new ArrayList<AirportDTO>();
-        
-        for(Airport f : airportRepository.findAll()){
-            response.add(Airport.toDTO(f));
+
+        for (Airport f : airportRepository.findAll()) {
+            response.add(AirportEntityToDTOMapper.mapAirportToAirportDTO(f));
         }
 
         return response;
@@ -30,14 +32,15 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     @Transactional
-    public AirportDTO deleteAirport(String cod) {
-        airportRepository.deleteByCod(cod);
+    public AirportDTO deleteAirport(AirportDTO request) {
+        Airport deletedEntity = AirportDTOToEntityMapper.mapAirportDTOToAirport(request);
+        airportRepository.deleteById(deletedEntity.getId());
         return null;
     }
 
     @Override
     public AirportDTO addAirport(AirportDTO request) {
-        airportRepository.save(AirportDTO.toEntity(request));
+        airportRepository.save(AirportDTOToEntityMapper.mapAirportDTOToAirport(request));
         return request;
     }
 
@@ -47,7 +50,7 @@ public class AirportServiceImpl implements AirportService {
         airportToUpdate.setCity(request.getCity());
         airportToUpdate.setName(request.getName());
         airportRepository.save(airportToUpdate);
-        return request;        
+        return request;
     }
-    
+
 }

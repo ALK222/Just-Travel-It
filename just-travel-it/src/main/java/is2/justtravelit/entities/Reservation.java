@@ -8,13 +8,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import is2.justtravelit.dtos.ReservationDTO;
+import is2.justtravelit.mappers.FlightEntityToDTOMapper;
+import is2.justtravelit.mappers.HotelEntityToDTOMapper;
 
 @Entity
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    Long id;
 
     @OneToOne
     Flight goFlight;
@@ -27,11 +29,11 @@ public class Reservation {
 
     boolean candeled;
 
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,9 +79,9 @@ public class Reservation {
 
     public static ReservationDTO toDTO(Reservation reservation) {
         ReservationDTO reservationDTO = new ReservationDTO();
-        reservationDTO.setGoFlight(Flight.toDTO(reservation.getGoFlight()));
-        reservationDTO.setGoFlight(Flight.toDTO(reservation.getReturnFlight()));
-        reservationDTO.setHotel(Hotel.toDTO(reservation.getHotel()));
+        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getGoFlight()));
+        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getReturnFlight()));
+        reservationDTO.setHotel(HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(reservation.getHotel()));
         reservationDTO.setCanceled(reservation.isCanceled());
 
         return reservationDTO;

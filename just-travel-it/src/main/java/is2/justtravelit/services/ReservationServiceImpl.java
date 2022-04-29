@@ -7,11 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import is2.justtravelit.dtos.FlightDTO;
-import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.entities.Reservation;
 import is2.justtravelit.entities.User;
+import is2.justtravelit.mappers.FlightDTOToEntityMapper;
+import is2.justtravelit.mappers.HotelDTOToEntityMapper;
+import is2.justtravelit.mappers.ReservationDTOToEntityMapper;
 import is2.justtravelit.repositories.ReservationRepository;
 import is2.justtravelit.repositories.UserRepository;
 
@@ -43,7 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
-        Reservation reservationToAdd = ReservationDTO.toEntity(request);
+        Reservation reservationToAdd = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
         User user = userRepository.findByName(id);
 
         reservationToAdd.setUser(user);
@@ -53,15 +54,23 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void modifyReservation(ReservationDTO request, FlightDTO newGoFlight, FlightDTO newReturnFlight,
-            HotelDTO newHotel) {
-        request.setGoFlight(newGoFlight);
-        request.setReturnFlight(newReturnFlight);
-        request.setHotel(newHotel);
+    public ReservationDTO modifyReservation(ReservationDTO request) {
+        Reservation modifiedEntity = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
+        Optional<Reservation> reservationToUpdate = reservationRepository.findById(modifiedEntity.getId());
+        if (reservationToUpdate.isPresent()) {
+            reservationToUpdate.get().setCanceled(request.isCanceled());
+            reservationToUpdate.get().setGoFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getGoFlight()));
+            reservationToUpdate.get().setHotel(HotelDTOToEntityMapper.mapHotelDTOToHotel(request.getHotel()));
+            reservationToUpdate.get().setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
+            reservationToUpdate.get().setUser(request.getUser());
+            reservationRepository.save(reservationToUpdate.get());
+            return request;
+        }
+        return null;
     }
 
     @Override
-    public ReservationDTO getReservationsById(Integer id) {
+    public ReservationDTO getReservationsById(Long id) {
         Optional<Reservation> response;
 
         response = reservationRepository.findById(id);
@@ -70,9 +79,14 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO cancelReservation(ReservationDTO response) {
-        response.setCanceled(true);
-        return response;
+    public ReservationDTO cancelReservation(ReservationDTO request) {
+        Reservation canceledEntity = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
+        Optional<Reservation> response = reservationRepository.findById(canceledEntity.getId());
+        if (response.isPresent()) {
+            response.get().setCanceled(true);
+            return Reservation.toDTO(response.get());
+        }
+        return null;
     }
 
 }

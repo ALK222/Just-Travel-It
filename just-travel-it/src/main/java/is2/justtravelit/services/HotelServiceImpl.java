@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.entities.Hotel;
+import is2.justtravelit.mappers.HotelDTOToEntityMapper;
+import is2.justtravelit.mappers.HotelEntityToDTOMapper;
 import is2.justtravelit.repositories.HotelRespository;
 
 @Service
@@ -23,7 +25,7 @@ public class HotelServiceImpl implements HotelService {
         List<HotelDTO> response = new ArrayList<HotelDTO>();
 
         for (Hotel f : hotelRepository.findAll()) {
-            response.add(Hotel.toDTO(f));
+            response.add(HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(f));
         }
 
         return response;
@@ -31,24 +33,25 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     @Transactional
-    public HotelDTO deleteHotel(Long id) {
-        hotelRepository.deleteById(id);
+    public HotelDTO deleteHotel(HotelDTO request) {
+        Hotel deletedEntity = HotelDTOToEntityMapper.mapHotelDTOToHotel(request);
+        hotelRepository.deleteById(deletedEntity.getId());
         return null;
     }
 
     @Override
     public HotelDTO addHotel(HotelDTO request) {
-        hotelRepository.save(HotelDTO.toEntity(request));
+        hotelRepository.save(HotelDTOToEntityMapper.mapHotelDTOToHotel(request));
         return request;
     }
 
     @Override
-    public HotelDTO getHotelById(long id) {
+    public HotelDTO getHotelById(Long id) {
         Optional<Hotel> response;
 
         response = hotelRepository.findById(id);
 
-        return response.isPresent() ? null : Hotel.toDTO(response.get());
+        return response.isPresent() ? null : HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(response.get());
     }
 
 }

@@ -1,22 +1,16 @@
 package is2.justtravelit.dtos;
 
-import is2.justtravelit.entities.Airport;
+
 
 public class AirportDTO {
 
-    private long id;
+    
     private String city;
     private String cod;
     private String name;
 
 
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    
 
     public String getCity() {
         return this.city;
@@ -42,11 +36,5 @@ public class AirportDTO {
         this.name = name;
     }
 
-    public static Airport toEntity(AirportDTO airportDTO) {
-        Airport airport = new Airport();
-        airport.setName(airportDTO.getName());
-        airport.setCod(airportDTO.getCod());
-        airport.setCity(airportDTO.getCity());
-        return airport;
-    }
+    
 }

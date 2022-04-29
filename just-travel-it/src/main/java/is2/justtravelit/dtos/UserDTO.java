@@ -1,7 +1,5 @@
 package is2.justtravelit.dtos;
 
-import is2.justtravelit.entities.User;
-
 public class UserDTO {
     private String name;
     private String password;
@@ -48,14 +46,7 @@ public class UserDTO {
         this.password = password;
     }
 
-    public static User toEntity(UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setPassword(userDTO.getPassword());
-        user.setEmail(userDTO.getNif());
-        user.setEmail(userDTO.getEmail());
-        return user;
-    }
+    
 
     
 }

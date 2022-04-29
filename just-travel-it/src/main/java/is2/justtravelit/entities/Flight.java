@@ -6,13 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import is2.justtravelit.dtos.FlightDTO;
-
 @Entity
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
     private String codigo;
 
@@ -27,11 +25,11 @@ public class Flight {
     
 
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,14 +73,6 @@ public class Flight {
         this.aeropuertoLlegada = aeropuertoLlegada;
     }
 
-    public static FlightDTO toDTO(Flight flight) {
-        FlightDTO flightDTO = new FlightDTO();
-        flightDTO.setCodigo(flight.getCodigo());
-        flightDTO.setFechaSalida(flight.getFechaSalida());
-        flightDTO.setFechaLlegada(flight.getFechaLlegada());
-        flightDTO.setAeropuertoSalida(Airport.toDTO(flight.getAeropuertoSalida()));
-        flightDTO.setAeropuertoLlegada(Airport.toDTO(flight.getAeropuertoLlegada()));
-        return flightDTO;
-    }
+    
 
 }

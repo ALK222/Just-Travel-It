@@ -5,10 +5,10 @@ import java.util.List;
 import is2.justtravelit.dtos.AirportDTO;
 
 public interface AirportService {
-    
+
     public List<AirportDTO> getAirports();
 
-    public AirportDTO deleteAirport(String cod);
+    public AirportDTO deleteAirport(AirportDTO request);
 
     public AirportDTO addAirport(AirportDTO request);
 

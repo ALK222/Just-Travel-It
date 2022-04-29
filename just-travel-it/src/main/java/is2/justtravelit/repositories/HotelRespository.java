@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import is2.justtravelit.entities.Hotel;
 
 @Repository
-public interface HotelRespository extends CrudRepository<Hotel,Integer>{
+public interface HotelRespository extends CrudRepository<Hotel, Long> {
 
     void deleteById(Long id);
 

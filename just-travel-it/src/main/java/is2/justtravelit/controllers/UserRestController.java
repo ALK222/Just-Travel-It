@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.UserDTO;
-import is2.justtravelit.dtos.UserPasswordChangeDTO;
 import is2.justtravelit.services.UserService;
 
 @RestController
@@ -34,15 +34,12 @@ public class UserRestController {
         }
     }
 
-    @PostMapping("/newpassword")
-    public ResponseEntity<UserDTO> userNewPassword(@RequestBody UserPasswordChangeDTO userPasswordChangeDTO) {
-        UserDTO userDTO = new UserDTO(userPasswordChangeDTO.getName());
-        userDTO.setPassword(userPasswordChangeDTO.getPassword());
-        userDTO = userService.userValidation(userDTO);
-        if (userDTO != null) {
+    @PutMapping("/user/newpassword")
+    public ResponseEntity<UserDTO> userNewPassword(@RequestBody UserDTO userDTO) {
+        UserDTO response = userService.changePassword(userDTO);
+        if (response != null) {
             try {
-                userService.changePassword(userDTO, userPasswordChangeDTO.getNewPassword());
-                return new ResponseEntity<>(userDTO, HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -66,7 +63,7 @@ public class UserRestController {
         }
     }
 
-    @GetMapping("/showusers")
+    @GetMapping("/users")
     public ResponseEntity<List<UserDTO>> usersShowAll() {
         return new ResponseEntity<List<UserDTO>>(userService.findAllUsers(), HttpStatus.ACCEPTED);
     }

@@ -6,14 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import is2.justtravelit.dtos.AirportDTO;
-
 @Entity
 public class Airport {
     
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long id;
     private String city;
 
     @Column(unique=true)
@@ -25,11 +23,11 @@ public class Airport {
     public Airport() {
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,11 +55,4 @@ public class Airport {
         this.name = name;
     }
 
-    public static AirportDTO toDTO(Airport airport) {
-        AirportDTO airportDTO = new AirportDTO();
-        airportDTO.setName(airport.getName());
-        airportDTO.setCod(airport.getCod());
-        airportDTO.setCity(airport.getCity());
-        return airportDTO;
-    }
 }
