@@ -28,8 +28,8 @@ public class AirportRestController {
     /**
      * Muestra todos los aeropuertos disponibles en la base de datos
      * 
-     * @return listado de aeropuertos y un
-     *         código HTTP dependiendo del resultado de la operación
+     * @return Listado de aeropuertos y un código HTTP dependiendo del resultado de
+     *         la operación
      * @see ResponseEntity
      * @see AirportDTO
      */
@@ -37,12 +37,7 @@ public class AirportRestController {
     public ResponseEntity<List<AirportDTO>> getAirports() {
         try {
             List<AirportDTO> response = airportService.getAirports();
-            if (response != null) {
-                return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
-
-            } else {
-                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-            }
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -52,8 +47,8 @@ public class AirportRestController {
      * Añade un nuevo aeropuerto a la base de datos
      * 
      * @param request Aeropuerto a añadir
-     * @return Aeropuerto creado y un código HTTP
-     *         código dependiendo del resultado de la operación
+     * @return Aeropuerto creado y un código HTTP código dependiendo del resultado
+     *         de la operación
      * @see ResponseEntity
      * @see RequestBody
      * @see AirportDTO
@@ -77,8 +72,8 @@ public class AirportRestController {
      * Borrra un aeropuerto de la base de datos
      * 
      * @param request Aeropuerto a borrar
-     * @return Aeropuerto borrado y un código HTTP
-     *         dependiendo del resultado de la operación
+     * @return Aeropuerto borrado y un código HTTP dependiendo del resultado de la
+     *         operación
      * @see ResponseEntity
      * @see RequestBody
      * @see AirportDTO
@@ -93,8 +88,8 @@ public class AirportRestController {
      * Actualiza un aeropuerto en la base de datos
      * 
      * @param request Aeropuerto con los datos actualizados
-     * @return Aeropuerto actualizado y un código HTTP
-     *         dependiendo del resultado de la operación
+     * @return Aeropuerto actualizado y un código HTTP dependiendo del resultado de
+     *         la operación
      * @see ResponseEntity
      * @see RequestBody
      * @see AirportDTO
