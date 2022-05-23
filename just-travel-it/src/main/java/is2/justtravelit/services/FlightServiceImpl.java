@@ -19,6 +19,9 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     FlightRespository flightRepository;
 
+    /**
+     * @return List<FlightDTO>
+     */
     @Override
     public List<FlightDTO> getFlights() {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
@@ -30,6 +33,10 @@ public class FlightServiceImpl implements FlightService {
         return response;
     }
 
+    /**
+     * @param request
+     * @return FlightDTO
+     */
     @Override
     public FlightDTO deleteFlight(FlightDTO request) {
         Flight deletedEntity = FlightDTOToEntityMapper.mapFlightDTOToFlight(request);
@@ -37,12 +44,20 @@ public class FlightServiceImpl implements FlightService {
         return null;
     }
 
+    /**
+     * @param request
+     * @return FlightDTO
+     */
     @Override
     public FlightDTO addFlight(FlightDTO request) {
         flightRepository.save(FlightDTOToEntityMapper.mapFlightDTOToFlight(request));
         return request;
     }
 
+    /**
+     * @param id
+     * @return FlightDTO
+     */
     @Override
     public FlightDTO getFlightById(Long id) {
         Optional<Flight> response;

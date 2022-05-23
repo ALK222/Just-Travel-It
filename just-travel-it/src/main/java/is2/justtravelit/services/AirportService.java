@@ -4,6 +4,9 @@ import java.util.List;
 
 import is2.justtravelit.dtos.AirportDTO;
 
+/**
+ * Interfaz para el servicio de aeropuertos
+ */
 public interface AirportService {
 
     public List<AirportDTO> getAirports();
