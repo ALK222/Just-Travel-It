@@ -4,6 +4,9 @@ import java.util.List;
 
 import is2.justtravelit.dtos.FlightDTO;
 
+/**
+ * Interfaz para el servicio de vuelos
+ */
 public interface FlightService {
 
     List<FlightDTO> getFlights();

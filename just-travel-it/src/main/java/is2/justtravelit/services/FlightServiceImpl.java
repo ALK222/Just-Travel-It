@@ -13,6 +13,12 @@ import is2.justtravelit.mappers.FlightDTOToEntityMapper;
 import is2.justtravelit.mappers.FlightEntityToDTOMapper;
 import is2.justtravelit.repositories.FlightRespository;
 
+/**
+ * Servicio de vuelos
+ * 
+ * @see FlightService
+ * @see org.springframework.stereotype.Service
+ */
 @Service
 public class FlightServiceImpl implements FlightService {
 
@@ -20,7 +26,11 @@ public class FlightServiceImpl implements FlightService {
     FlightRespository flightRepository;
 
     /**
-     * @return List<FlightDTO>
+     * @return Listado de todos los vuelos registrados
+     * @see Flight
+     * @see FlightDTO
+     * @see FlightEntityToDTOMapper
+     * @see FlightRepository
      */
     @Override
     public List<FlightDTO> getFlights() {
@@ -34,8 +44,15 @@ public class FlightServiceImpl implements FlightService {
     }
 
     /**
-     * @param request
-     * @return FlightDTO
+     * Borra un vuelo de la base de datos
+     * 
+     * @param request Vuelo a borrar
+     * @return NULL
+     * @see FlightDTO
+     * @see Flight
+     * @see FlightDTOToEntityMapper
+     * @see FlightRepository
+     * @see javax.transaction.Transactional
      */
     @Override
     public FlightDTO deleteFlight(FlightDTO request) {
@@ -45,8 +62,14 @@ public class FlightServiceImpl implements FlightService {
     }
 
     /**
-     * @param request
-     * @return FlightDTO
+     * Añade un vuelo a la base de datos
+     * 
+     * @param request vuelo a añadir
+     * @return Vuelo añadido
+     * @see FlightDTO
+     * @see Flight
+     * @see FlightDTOToEntityMapper
+     * @see FlightRepository
      */
     @Override
     public FlightDTO addFlight(FlightDTO request) {
@@ -55,8 +78,13 @@ public class FlightServiceImpl implements FlightService {
     }
 
     /**
-     * @param id
-     * @return FlightDTO
+     * Actualiza los datos de un vuelo en la base de datos
+     * 
+     * @param request Vuelo a actualziar
+     * @return Vuelo modificado
+     * @see FlightDTO
+     * @see Flight
+     * @see FlightRepository
      */
     @Override
     public FlightDTO getFlightById(Long id) {
