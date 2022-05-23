@@ -11,6 +11,11 @@ import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.mappers.FlightEntityToDTOMapper;
 import is2.justtravelit.mappers.HotelEntityToDTOMapper;
 
+/**
+ * Entity de reservas
+ * 
+ * @see javax.persistence.Entity
+ */
 @Entity
 public class Reservation {
 
@@ -29,54 +34,103 @@ public class Reservation {
 
     boolean candeled;
 
+    /**
+     * @return ID de la reserva en la base de datos
+     */
     public Long getId() {
         return this.id;
     }
 
+    /**
+     * @param id Nuevo ID de la reserva
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * @return Vuelo de ida
+     * @see Flight
+     */
     public Flight getGoFlight() {
         return this.goFlight;
     }
 
+    /**
+     * @param goFlight Nuevo vuelo de ida
+     * @see Flight
+     */
     public void setGoFlight(Flight goFlight) {
         this.goFlight = goFlight;
     }
 
+    /**
+     * @return Vuelo de vuelta
+     * @see Flight
+     */
     public Flight getReturnFlight() {
         return this.returnFlight;
     }
 
+    /**
+     * @param returnFlight Nuevo vuelo de vuelta
+     * @see Flight
+     */
     public void setReturnFlight(Flight returnFlight) {
         this.returnFlight = returnFlight;
     }
 
+    /**
+     * @return Hotel de la reserva
+     * @see Hotel
+     */
     public Hotel getHotel() {
         return this.hotel;
     }
 
+    /**
+     * @param hotel Nuevo hotel
+     * @see Hotel
+     */
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 
+    /**
+     * @return Usuario que hizo la reserva
+     * @see User
+     */
     public User getUser() {
         return this.user;
     }
 
+    /**
+     * @param user Nuevo usuario de la reserva
+     * @see User
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * @return Estado de cancelación de la reserva
+     */
     public boolean isCanceled() {
         return candeled;
     }
 
+    /**
+     * @param canceled Nuevo estado de cancelación de la reserva
+     */
     public void setCanceled(boolean canceled) {
         this.candeled = canceled;
     }
 
+    /**
+     * @param reservation Reserva a transformar en DTO
+     * @return Reserva en forma de DTO
+     * @see ReservationDTO
+     */
     public static ReservationDTO toDTO(Reservation reservation) {
         ReservationDTO reservationDTO = new ReservationDTO();
         reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getGoFlight()));
