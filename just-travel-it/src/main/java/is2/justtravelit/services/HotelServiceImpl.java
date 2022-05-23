@@ -31,7 +31,7 @@ public class HotelServiceImpl implements HotelService {
      * @see Hotel
      * @see HotelDTO
      * @see HotelEntityToDTOMapper
-     * @see HotelRepository
+     * @see HotelRespository
      */
     @Override
     public List<HotelDTO> getHotels() {
@@ -52,7 +52,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRepository
+     * @see HotelRespository
      * @see javax.transaction.Transactional
      */
     @Override
@@ -71,7 +71,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRepository
+     * @see HotelRespository
      */
     @Override
     public HotelDTO addHotel(HotelDTO request) {
@@ -87,7 +87,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRepository
+     * @see HotelRespository
      */
     @Override
     public HotelDTO getHotelById(Long id) {

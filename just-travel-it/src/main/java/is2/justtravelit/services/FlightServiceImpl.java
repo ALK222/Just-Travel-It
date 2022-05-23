@@ -30,7 +30,7 @@ public class FlightServiceImpl implements FlightService {
      * @see Flight
      * @see FlightDTO
      * @see FlightEntityToDTOMapper
-     * @see FlightRepository
+     * @see FlightRespository
      */
     @Override
     public List<FlightDTO> getFlights() {
@@ -51,7 +51,7 @@ public class FlightServiceImpl implements FlightService {
      * @see FlightDTO
      * @see Flight
      * @see FlightDTOToEntityMapper
-     * @see FlightRepository
+     * @see FlightRespository
      * @see javax.transaction.Transactional
      */
     @Override
@@ -69,7 +69,7 @@ public class FlightServiceImpl implements FlightService {
      * @see FlightDTO
      * @see Flight
      * @see FlightDTOToEntityMapper
-     * @see FlightRepository
+     * @see FlightRespository
      */
     @Override
     public FlightDTO addFlight(FlightDTO request) {
@@ -84,7 +84,7 @@ public class FlightServiceImpl implements FlightService {
      * @return FlightDTO o NULL si no se encuentra el vuelo
      * @see FlightDTO
      * @see Flight
-     * @see FlightRepository
+     * @see FlightRespository
      */
     @Override
     public FlightDTO getFlightById(Long id) {

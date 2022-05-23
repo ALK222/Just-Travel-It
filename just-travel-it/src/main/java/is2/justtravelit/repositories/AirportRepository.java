@@ -33,6 +33,7 @@ public interface AirportRepository extends CrudRepository<Airport, Long> {
      * Busca el aeropuerto dado un código de referencia
      * 
      * @param cod Código del aeropuerto a buscar
+     * @return Aeropuerto buscado
      */
     Airport findByCod(String cod);
 

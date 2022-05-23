@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"is2.justtravelit"},{"l":"is2.justtravelit.controllers"},{"l":"is2.justtravelit.dtos"},{"l":"is2.justtravelit.entities"},{"l":"is2.justtravelit.mappers"},{"l":"is2.justtravelit.repositories"},{"l":"is2.justtravelit.services"}]

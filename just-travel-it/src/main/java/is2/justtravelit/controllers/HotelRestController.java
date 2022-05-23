@@ -43,7 +43,7 @@ public class HotelRestController {
     /**
      * Añade un nuevo hotel a la base de datos
      * 
-     * @param request Hotel a añadir
+     * @param hotelDTO Hotel a añadir
      * @return Hotel creado y un código HTTP código dependiendo del resultado
      *         de la operación
      * @see ResponseEntity
