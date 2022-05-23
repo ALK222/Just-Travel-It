@@ -19,12 +19,27 @@ import is2.justtravelit.entities.User;
 import is2.justtravelit.mappers.UserDTOToEntityMapper;
 import is2.justtravelit.services.ReservationService;
 
+/**
+ * Controlador para todas las operaciones con reservas
+ * 
+ * @see RestController
+ */
 @RestController
 public class ReservationRestControler {
 
     @Autowired
     private ReservationService reservationService;
 
+    /**
+     * Muestra todas los reservas disponibles en la base de datos para un usuario
+     * dado
+     * 
+     * @param request Usuario del que buscar las reservas
+     * @return Listado de reservas y un código HTTP dependiendo del resultado de
+     *         la operación
+     * @see ResponseEntity
+     * @see ReservationDTO
+     */
     @GetMapping("/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@RequestBody UserDTO request) {
         User userEntity = UserDTOToEntityMapper.mapUserDTOToUser(request);
@@ -33,6 +48,17 @@ public class ReservationRestControler {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Añade un nuevo reserva a la base de datos
+     * 
+     * @param request Reserva a añadir
+     * @param id      ID del usuario que hace la reserva
+     * @return Reserva creada y un código HTTP código dependiendo del resultado
+     *         de la operación
+     * @see ResponseEntity
+     * @see RequestBody
+     * @see ReservationDTO
+     */
     @PostMapping("/reservations")
     public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
         ReservationDTO response = new ReservationDTO();
@@ -41,6 +67,16 @@ public class ReservationRestControler {
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Borrra un reserva de la base de datos
+     * 
+     * @param request Reserva a borrar
+     * @return Reserva borrada y un código HTTP dependiendo del resultado de la
+     *         operación
+     * @see ResponseEntity
+     * @see RequestBody
+     * @see ReservationDTO
+     */
     @PutMapping("/reservation/cancel")
     public ResponseEntity<ReservationDTO> cancelReservation(@RequestBody ReservationDTO request) {
         ReservationDTO response = reservationService.cancelReservation(request);
@@ -56,6 +92,16 @@ public class ReservationRestControler {
         }
     }
 
+    /**
+     * Actualiza un reserva en la base de datos
+     * 
+     * @param request Reserva con los datos actualizados
+     * @return Reserva actualizada y un código HTTP dependiendo del resultado de
+     *         la operación
+     * @see ResponseEntity
+     * @see RequestBody
+     * @see ReservationDTO
+     */
     @PutMapping("/reservations")
     public ResponseEntity<ReservationDTO> modifyReservation(@RequestBody ReservationDTO request) {
         ReservationDTO response = reservationService.modifyReservation(request);
