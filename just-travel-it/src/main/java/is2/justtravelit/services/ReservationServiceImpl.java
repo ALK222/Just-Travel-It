@@ -17,6 +17,12 @@ import is2.justtravelit.mappers.ReservationEntityToDTOMapper;
 import is2.justtravelit.repositories.ReservationRepository;
 import is2.justtravelit.repositories.UserRepository;
 
+/**
+ * Servicio de reservas
+ * 
+ * @see ReservationService
+ * @see org.springframework.stereotype.Service
+ */
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
@@ -27,8 +33,14 @@ public class ReservationServiceImpl implements ReservationService {
     UserRepository userRepository;
 
     /**
-     * @param id
-     * @return List<ReservationDTO>
+     * Busca todas las reservas dado un id de usuario
+     * 
+     * @param id ID del usuario del que se buscan las reservas
+     * @return Listado de reservas
+     * @see ReservationDTO
+     * @see ReservationRepository
+     * @see Reservation
+     * @see ReservationEntityToDTOMapper
      */
     @Override
     public List<ReservationDTO> getReservationsByUser(String id) {
@@ -48,9 +60,17 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     /**
-     * @param request
-     * @param id
-     * @return ReservationDTO
+     * Añade una reserva a la base de datos
+     * 
+     * @param request Reserva a añadir
+     * @param id      Usuario que hace la reserva
+     * @return Reserva hecha
+     * @see ReservationDTO
+     * @see Reservation
+     * @see ReservationRepository
+     * @see User
+     * @see ReservationDTOToEntityMapper
+     * @see ReservationEntityToDTOMapper
      */
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
@@ -64,8 +84,17 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     /**
-     * @param request
-     * @return ReservationDTO
+     * Modificación de una reserva
+     * 
+     * @param request Reserva a modificar
+     * @return Reserva Modificada
+     * @see ReservationDTO
+     * @see Reservation
+     * @see ReservationRepository
+     * @see User
+     * @see ReservationDTOToEntityMapper
+     * @see FlightDTOToEntityMapper
+     * @see HotelDTOToEntityMapper
      */
     @Override
     public ReservationDTO modifyReservation(ReservationDTO request) {
@@ -85,8 +114,15 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     /**
-     * @param id
-     * @return ReservationDTO
+     * Busca una reserva dado un código
+     * 
+     * @param id ID de la reserva
+     * @return ReservationDTO o NULL si no se encuentra la reserva
+     * @see Optional
+     * @see Reservation
+     * @see ReservationDTO
+     * @see ReservationRepository
+     * @see ReservationEntityToDTOMapper
      */
     @Override
     public ReservationDTO getReservationsById(Long id) {
@@ -99,8 +135,16 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     /**
-     * @param request
-     * @return ReservationDTO
+     * Cancela una reserva
+     * 
+     * @param request Reserva a cancelar
+     * @return NULL
+     * @see Optional
+     * @see Reservation
+     * @see ReservationDTO
+     * @see ReservationRepository
+     * @see ReservationDTOToEntityMapper
+     * @see ReservationEntityToDTOMapper
      */
     @Override
     public ReservationDTO cancelReservation(ReservationDTO request) {

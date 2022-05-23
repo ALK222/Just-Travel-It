@@ -4,6 +4,9 @@ import java.util.List;
 
 import is2.justtravelit.dtos.ReservationDTO;
 
+/**
+ * Interfaz para el servicio de reservas
+ */
 public interface ReservationService {
 
     List<ReservationDTO> getReservationsByUser(String id);
