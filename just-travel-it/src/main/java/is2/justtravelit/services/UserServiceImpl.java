@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import is2.justtravelit.dtos.UserDTO;
 import is2.justtravelit.entities.User;
 import is2.justtravelit.mappers.UserDTOToEntityMapper;
+import is2.justtravelit.mappers.UserEntityToDTOMapper;
 import is2.justtravelit.repositories.UserRepository;
 
 @Service
@@ -17,6 +18,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * @param userDTO
+     * @return UserDTO
+     */
     @Override
     public UserDTO userValidation(UserDTO userDTO) {
 
@@ -31,6 +36,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     * @param userDTO
+     * @return UserDTO
+     */
     @Override
     public UserDTO userRegister(UserDTO userDTO) {
         if (userRepository.findByName(userDTO.getName()) == null) {
@@ -42,17 +51,24 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     * @return List<UserDTO>
+     */
     @Override
     public List<UserDTO> findAllUsers() {
         List<UserDTO> response = new ArrayList<UserDTO>();
         for (User user : userRepository.findAll()) {
-            response.add(User.toDTO(user));
+            response.add(UserEntityToDTOMapper.mapUserEntityToUserDTO(user));
         }
 
         return response;
 
     }
 
+    /**
+     * @param request
+     * @return UserDTO
+     */
     @Override
     public UserDTO changePassword(UserDTO request) {
         User userToUpdate = userRepository.findByName(request.getName());
