@@ -4,6 +4,9 @@ import java.util.List;
 
 import is2.justtravelit.dtos.UserDTO;
 
+/**
+ * Interfaz para el servicio de usuarios
+ */
 public interface UserService {
 
     UserDTO userValidation(UserDTO userDTO);

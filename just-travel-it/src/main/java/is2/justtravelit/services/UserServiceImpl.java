@@ -12,6 +12,12 @@ import is2.justtravelit.mappers.UserDTOToEntityMapper;
 import is2.justtravelit.mappers.UserEntityToDTOMapper;
 import is2.justtravelit.repositories.UserRepository;
 
+/**
+ * Servicio de usuarios
+ * 
+ * @see UserService
+ * @see org.springframework.stereotype.Service
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,8 +25,13 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     /**
-     * @param userDTO
-     * @return UserDTO
+     * Validación de usuarios
+     * 
+     * @param userDTO usuario a validar
+     * @return Usuario con solo su nombre o NULL si no se consigue validar
+     * @see UserDTO
+     * @see User
+     * @see UserRepository
      */
     @Override
     public UserDTO userValidation(UserDTO userDTO) {
@@ -37,8 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param userDTO
-     * @return UserDTO
+     * Registro de un usuario nuevo
+     * 
+     * @param userDTO Usuario a registrar
+     * @return UserDTO con solo el nombre del usuario o NULL si no se consigue
+     *         registrar
+     * @see UserDTO
+     * @see UserDTOToEntityMapper
+     * @see UserRepository
      */
     @Override
     public UserDTO userRegister(UserDTO userDTO) {
@@ -52,7 +69,12 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @return List<UserDTO>
+     * Devuelve un listado con todos los usuarios de la aplicación
+     * 
+     * @return Listado con todos los usuarios
+     * @see UserDTO
+     * @see UserRepository
+     * @see UserEntityToDTOMapper
      */
     @Override
     public List<UserDTO> findAllUsers() {
@@ -66,8 +88,13 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param request
-     * @return UserDTO
+     * Cambia la contraseña de un usuario
+     * 
+     * @param request Usuario con la contraseña cambiada
+     * @return UserDTO usuario actrualizado
+     * @see User
+     * @see UserRepository
+     * @see UserDTO
      */
     @Override
     public UserDTO changePassword(UserDTO request) {
