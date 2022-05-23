@@ -13,6 +13,7 @@ import is2.justtravelit.entities.User;
 import is2.justtravelit.mappers.FlightDTOToEntityMapper;
 import is2.justtravelit.mappers.HotelDTOToEntityMapper;
 import is2.justtravelit.mappers.ReservationDTOToEntityMapper;
+import is2.justtravelit.mappers.ReservationEntityToDTOMapper;
 import is2.justtravelit.repositories.ReservationRepository;
 import is2.justtravelit.repositories.UserRepository;
 
@@ -25,6 +26,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * @param id
+     * @return List<ReservationDTO>
+     */
     @Override
     public List<ReservationDTO> getReservationsByUser(String id) {
         List<Reservation> query = new ArrayList<Reservation>();
@@ -36,12 +41,17 @@ public class ReservationServiceImpl implements ReservationService {
         List<ReservationDTO> response = new ArrayList<>();
 
         for (Reservation r : query) {
-            response.add(Reservation.toDTO(r));
+            response.add(ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(r));
         }
 
         return response;
     }
 
+    /**
+     * @param request
+     * @param id
+     * @return ReservationDTO
+     */
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
         Reservation reservationToAdd = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
@@ -50,9 +60,13 @@ public class ReservationServiceImpl implements ReservationService {
         reservationToAdd.setUser(user);
         reservationRepository.save(reservationToAdd);
 
-        return Reservation.toDTO(reservationToAdd);
+        return ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(reservationToAdd);
     }
 
+    /**
+     * @param request
+     * @return ReservationDTO
+     */
     @Override
     public ReservationDTO modifyReservation(ReservationDTO request) {
         Reservation modifiedEntity = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
@@ -61,7 +75,8 @@ public class ReservationServiceImpl implements ReservationService {
             reservationToUpdate.get().setCanceled(request.isCanceled());
             reservationToUpdate.get().setGoFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getGoFlight()));
             reservationToUpdate.get().setHotel(HotelDTOToEntityMapper.mapHotelDTOToHotel(request.getHotel()));
-            reservationToUpdate.get().setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
+            reservationToUpdate.get()
+                    .setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
             reservationToUpdate.get().setUser(request.getUser());
             reservationRepository.save(reservationToUpdate.get());
             return request;
@@ -69,22 +84,31 @@ public class ReservationServiceImpl implements ReservationService {
         return null;
     }
 
+    /**
+     * @param id
+     * @return ReservationDTO
+     */
     @Override
     public ReservationDTO getReservationsById(Long id) {
         Optional<Reservation> response;
 
         response = reservationRepository.findById(id);
 
-        return response.isPresent() ? null : Reservation.toDTO(response.get());
+        return response.isPresent() ? null
+                : ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(response.get());
     }
 
+    /**
+     * @param request
+     * @return ReservationDTO
+     */
     @Override
     public ReservationDTO cancelReservation(ReservationDTO request) {
         Reservation canceledEntity = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
         Optional<Reservation> response = reservationRepository.findById(canceledEntity.getId());
         if (response.isPresent()) {
             response.get().setCanceled(true);
-            return Reservation.toDTO(response.get());
+            return ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(response.get());
         }
         return null;
     }

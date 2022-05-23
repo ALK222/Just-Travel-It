@@ -7,10 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import is2.justtravelit.dtos.ReservationDTO;
-import is2.justtravelit.mappers.FlightEntityToDTOMapper;
-import is2.justtravelit.mappers.HotelEntityToDTOMapper;
-
 /**
  * Entity de reservas
  * 
@@ -124,21 +120,6 @@ public class Reservation {
      */
     public void setCanceled(boolean canceled) {
         this.candeled = canceled;
-    }
-
-    /**
-     * @param reservation Reserva a transformar en DTO
-     * @return Reserva en forma de DTO
-     * @see ReservationDTO
-     */
-    public static ReservationDTO toDTO(Reservation reservation) {
-        ReservationDTO reservationDTO = new ReservationDTO();
-        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getGoFlight()));
-        reservationDTO.setGoFlight(FlightEntityToDTOMapper.mapFlightToFlightDTO(reservation.getReturnFlight()));
-        reservationDTO.setHotel(HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(reservation.getHotel()));
-        reservationDTO.setCanceled(reservation.isCanceled());
-
-        return reservationDTO;
     }
 
 }
