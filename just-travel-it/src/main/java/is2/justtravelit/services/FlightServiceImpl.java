@@ -78,10 +78,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
     /**
-     * Actualiza los datos de un vuelo en la base de datos
+     * Busca un vuelo dado un ID
      * 
-     * @param request Vuelo a actualziar
-     * @return Vuelo modificado
+     * @param id ID del vuelo
+     * @return FlightDTO o NULL si no se encuentra el vuelo
      * @see FlightDTO
      * @see Flight
      * @see FlightRepository

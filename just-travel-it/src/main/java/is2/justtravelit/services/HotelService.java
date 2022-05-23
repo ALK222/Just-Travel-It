@@ -4,6 +4,9 @@ import java.util.List;
 
 import is2.justtravelit.dtos.HotelDTO;
 
+/**
+ * Interfaz para el servicio de hoteles
+ */
 public interface HotelService {
     public List<HotelDTO> getHotels();
 

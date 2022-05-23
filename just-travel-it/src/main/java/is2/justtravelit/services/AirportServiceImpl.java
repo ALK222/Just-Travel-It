@@ -66,7 +66,7 @@ public class AirportServiceImpl implements AirportService {
      * Añade un aeropuerto a la base de datos
      * 
      * @param request Aeropuerto a añadir
-     * @return AeropuertoAñadido
+     * @return Aeropuerto añadido
      * @see AirportDTO
      * @see Airport
      * @see AirportDTOToEntityMapper
