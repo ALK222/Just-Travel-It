@@ -31,7 +31,7 @@ public interface FlightRepository extends CrudRepository<Flight, Long> {
     /**
      * Comprueba la existencia de un vuelo dado un código
      * 
-     * @param cod Código del vuelo a comprobar
+     * @param codigo Código del vuelo a comprobar
      * @return Existe o no existe
      */
     boolean existsByCodigo(String codigo);
