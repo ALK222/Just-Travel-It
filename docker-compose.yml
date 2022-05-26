@@ -1,7 +1,7 @@
 version: '2'
 services:
-    webapp:
-        container_name: just-travel-it
+    just-travel-it1:
+        container_name: just-travel-it1
         build:
             context: just-travel-it
             dockerfile: Dockerfile
@@ -12,6 +12,19 @@ services:
         networks:
             - puente
     
+    just-travel-it2:
+        container_name: just-travel-it2
+        build:
+            context: just-travel-it
+            dockerfile: Dockerfile
+        ports:
+            - "8081:8081"
+        volumes:
+            - .:/todo
+        networks:
+            - puente
+    
+
     mysql-just:
         container_name: mysql-just
         image: mysql:5.6
@@ -25,6 +38,18 @@ services:
             - db-data:/var/lib/mysql-just
         ports:
             - "3307:3306"
+
+    loadbalancer:
+        image: haproxy:1.9.6
+        ports:
+        - '8090:8090'
+        - '443:443'
+        volumes:
+            - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+            - ./haproxy/just-travel-it.io.pem:/etc/ssl/certs/just-travel-it.io/just-travel-it.io.pem:ro
+        networks:
+            - puente
+        restart: unless-stopped
 
         
 volumes:
