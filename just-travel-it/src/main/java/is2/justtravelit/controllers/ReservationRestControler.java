@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,10 +50,11 @@ public class ReservationRestControler {
      * @see ReservationDTO
      */
     @GetMapping("/reservations")
-    public ResponseEntity<List<ReservationDTO>> getReservations(@RequestBody UserDTO request) {
+    public ResponseEntity<List<ReservationDTO>> getReservations() {
+
 
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
-        response = reservationService.getReservationsByUser(request.getNif());
+        response = reservationService.getReservationsByUser(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
 
     }
@@ -69,10 +71,10 @@ public class ReservationRestControler {
      * @see ReservationDTO
      */
     @PostMapping("/reservations")
-    public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
+    public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request) {
 
         ReservationDTO response = new ReservationDTO();
-        response = reservationService.addReservation(request, id);
+        response = reservationService.addReservation(request, SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
 
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
