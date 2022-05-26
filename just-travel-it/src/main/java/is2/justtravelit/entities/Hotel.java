@@ -25,9 +25,13 @@ public class Hotel {
     @Column(unique = true)
     private String cod;
 
+    
 
-    public Hotel(Long id, String name, Integer stars, String city, String cod) {
-        this.id = id;
+
+    
+
+    public Hotel( String name, Integer stars, String city, String cod) {
+        
         this.name = name;
         this.stars = stars;
         this.city = city;

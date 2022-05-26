@@ -29,4 +29,6 @@ public interface FlightRespository extends CrudRepository<Flight, Long> {
     void deleteById(Long id);
 
     boolean existsByCodigo(String codigo);
+
+    void deleteByCodigo(String codigo);
 }

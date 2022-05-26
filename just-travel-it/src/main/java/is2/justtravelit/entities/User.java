@@ -1,6 +1,10 @@
 package is2.justtravelit.entities;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 /**
@@ -16,6 +20,32 @@ public class User {
     private String password;
     private String nif;
     private String email;
+
+
+    @ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+
+    public User(){
+        
+    }
+
+    public User(String name, String nif, String email, String password, String... roles) {
+        
+		this.name = name;
+		this.nif = nif;
+		this.email = email;
+		this.password = password;
+		this.roles = List.of(roles);
+	}
+    
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     /**
      * @return Nombre del usuario

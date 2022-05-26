@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,9 +63,10 @@ public class FlightServiceImpl implements FlightService {
      * @see javax.transaction.Transactional
      */
     @Override
+    @Transactional
     public FlightDTO deleteFlight(FlightDTO request) {
-        Flight deletedEntity = FlightDTOToEntityMapper.mapFlightDTOToFlight(request);
-        flightRepository.deleteById(deletedEntity.getId());
+        
+        flightRepository.deleteByCodigo(request.getCodigo());
         return null;
     }
 

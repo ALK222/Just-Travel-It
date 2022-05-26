@@ -29,4 +29,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      */
     List<User> findAll();
 
+    void save(org.springframework.security.core.userdetails.User user);
+
 }

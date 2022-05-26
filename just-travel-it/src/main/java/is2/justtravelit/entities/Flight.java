@@ -1,5 +1,6 @@
 package is2.justtravelit.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,11 +23,21 @@ public class Flight {
     private java.sql.Date fechaSalida;
     private java.sql.Date fechaLlegada;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Airport aeropuertoSalida;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Airport aeropuertoLlegada;
+
+    public Flight(){
+        
+    }
+
+    public Flight(String codigo, Airport aeropuertoSalida, Airport aeropuertoLlegada) {
+        this.codigo = codigo;
+        this.aeropuertoSalida = aeropuertoSalida;
+        this.aeropuertoLlegada = aeropuertoLlegada;
+    }
 
     /**
      * @return ID del vuelo en la base de datos

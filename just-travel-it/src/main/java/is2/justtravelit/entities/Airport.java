@@ -27,6 +27,16 @@ public class Airport {
     public Airport() {
     }
 
+    
+
+    public Airport(String city, String cod, String name) {
+        this.city = city;
+        this.cod = cod;
+        this.name = name;
+    }
+
+
+
     /**
      * @return ID en la base de datos del aeropuerto
      */

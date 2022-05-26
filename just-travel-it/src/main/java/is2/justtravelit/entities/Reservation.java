@@ -1,5 +1,6 @@
 package is2.justtravelit.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +20,13 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     Flight goFlight;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     Flight returnFlight;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     Hotel hotel;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     User user;
 
     boolean candeled;
