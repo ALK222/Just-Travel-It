@@ -10,11 +10,13 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import is2.justtravelit.dtos.AirportDTO;
 import is2.justtravelit.dtos.FlightDTO;
 import is2.justtravelit.entities.Flight;
 import is2.justtravelit.mappers.FlightDTOToEntityMapper;
 import is2.justtravelit.mappers.FlightEntityToDTOMapper;
-import is2.justtravelit.repositories.FlightRespository;
+import is2.justtravelit.repositories.AirportRepository;
+import is2.justtravelit.repositories.FlightRepository;
 
 /**
  * Servicio de vuelos
@@ -26,9 +28,9 @@ import is2.justtravelit.repositories.FlightRespository;
 public class FlightServiceImpl implements FlightService {
 
     @Autowired
-    FlightRespository flightRepository;
+    FlightRepository flightRepository;
 
-    @Autowired 
+    @Autowired
     AirportService airportService;
 
     /**
@@ -36,14 +38,14 @@ public class FlightServiceImpl implements FlightService {
      * @see Flight
      * @see FlightDTO
      * @see FlightEntityToDTOMapper
-     * @see FlightRespository
+     * @see FlightRepository
      */
     @Override
     public List<FlightDTO> getFlights() {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
 
         List<Flight> query = flightRepository.findAll();
-        
+
         for (Flight f : query) {
             response.add(FlightEntityToDTOMapper.mapFlightToFlightDTO(f));
         }
@@ -59,7 +61,7 @@ public class FlightServiceImpl implements FlightService {
      * @see FlightDTO
      * @see Flight
      * @see FlightDTOToEntityMapper
-     * @see FlightRespository
+     * @see FlightRepository
      * @see javax.transaction.Transactional
      */
     @Override
@@ -78,7 +80,7 @@ public class FlightServiceImpl implements FlightService {
      * @see FlightDTO
      * @see Flight
      * @see FlightDTOToEntityMapper
-     * @see FlightRespository
+     * @see FlightRepository
      */
     @Override
     public FlightDTO addFlight(FlightDTO request) {
@@ -93,7 +95,7 @@ public class FlightServiceImpl implements FlightService {
      * @return FlightDTO o NULL si no se encuentra el vuelo
      * @see FlightDTO
      * @see Flight
-     * @see FlightRespository
+     * @see FlightRepository
      */
     @Override
     public FlightDTO getFlightById(Long id) {
@@ -104,6 +106,16 @@ public class FlightServiceImpl implements FlightService {
         return response.isPresent() ? null : FlightEntityToDTOMapper.mapFlightToFlightDTO(response.get());
     }
 
+    /**
+     * Valida la información de un vuelo
+     * 
+     * @param request aeropuerto a validar
+     * @return Si se encuentra en la base de datos o no
+     * @see FlightDTO
+     * @see FlightRepository
+     * @see AirportRepository
+     * @see AirportDTO
+     */
     @Override
     public Boolean flightValidation(FlightDTO request) {
 
@@ -111,11 +123,12 @@ public class FlightServiceImpl implements FlightService {
             return false;
         }
 
-        if(!airportService.airportValidation(request.getAeropuertoSalida()) || !airportService.airportValidation(request.getAeropuertoLlegada())){
+        if (!airportService.airportValidation(request.getAeropuertoSalida())
+                || !airportService.airportValidation(request.getAeropuertoLlegada())) {
             return false;
         }
-        
-        if(request.getAeropuertoSalida() == request.getAeropuertoLlegada()){
+
+        if (request.getAeropuertoSalida() == request.getAeropuertoLlegada()) {
             return false;
         }
 
@@ -128,7 +141,7 @@ public class FlightServiceImpl implements FlightService {
 
             return false;
         }
-        
+
         return true;
     }
 

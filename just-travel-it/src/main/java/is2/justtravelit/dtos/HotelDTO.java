@@ -9,8 +9,6 @@ public class HotelDTO {
     private String city;
     private String cod;
 
-    
-
     public HotelDTO() {
     }
 
@@ -28,10 +26,18 @@ public class HotelDTO {
         return this.name;
     }
 
+    /**
+     * 
+     * @return Código del hotel
+     */
     public String getCod() {
         return cod;
     }
 
+    /**
+     * 
+     * @param cod Nuevo código del hotel
+     */
     public void setCod(String cod) {
         this.cod = cod;
     }

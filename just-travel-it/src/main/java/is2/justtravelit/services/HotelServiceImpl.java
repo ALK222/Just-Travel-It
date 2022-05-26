@@ -13,7 +13,7 @@ import is2.justtravelit.dtos.HotelDTO;
 import is2.justtravelit.entities.Hotel;
 import is2.justtravelit.mappers.HotelDTOToEntityMapper;
 import is2.justtravelit.mappers.HotelEntityToDTOMapper;
-import is2.justtravelit.repositories.HotelRespository;
+import is2.justtravelit.repositories.HotelRepository;
 
 /**
  * Servicio de hoteles
@@ -24,14 +24,14 @@ import is2.justtravelit.repositories.HotelRespository;
 @Service
 public class HotelServiceImpl implements HotelService {
     @Autowired
-    HotelRespository hotelRepository;
+    HotelRepository hotelRepository;
 
     /**
      * @return Listado de todos los hoteles registrados
      * @see Hotel
      * @see HotelDTO
      * @see HotelEntityToDTOMapper
-     * @see HotelRespository
+     * @see HotelRepository
      */
     @Override
     public List<HotelDTO> getHotels() {
@@ -52,7 +52,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRespository
+     * @see HotelRepository
      * @see javax.transaction.Transactional
      */
     @Override
@@ -70,7 +70,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRespository
+     * @see HotelRepository
      */
     @Override
     public HotelDTO addHotel(HotelDTO request) {
@@ -90,7 +90,7 @@ public class HotelServiceImpl implements HotelService {
      * @see HotelDTO
      * @see Hotel
      * @see HotelDTOToEntityMapper
-     * @see HotelRespository
+     * @see HotelRepository
      */
     @Override
     public HotelDTO getHotelById(Long id) {
@@ -101,9 +101,17 @@ public class HotelServiceImpl implements HotelService {
         return response.isPresent() ? null : HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(response.get());
     }
 
+    /**
+     * Valida la información de un hotel antes de añadirlo a la base de datos
+     * 
+     * @param request Hotel a validar
+     * @return Si la información es válida o no
+     * @see HotelDTO
+     * @see HotelRepository
+     */
     @Override
     public Boolean addHotelValidation(HotelDTO request) {
-        
+
         if (hotelRepository.findByCod(request.getCod()) != null) {
             return false;
         }
@@ -111,11 +119,19 @@ public class HotelServiceImpl implements HotelService {
         if (request.getStars() == 0 || request.getStars() > 5) {
             return false;
         }
-        
+
         return true;
-        
+
     }
 
+    /**
+     * Valida la información de un hotel en la base de datos
+     * 
+     * @param request Hotel a validar
+     * @return Si la información es válida o no
+     * @see HotelDTO
+     * @see HotelRepository
+     */
     @Override
     public Boolean hotelValidation(HotelDTO request) {
         if (request.getStars() == 0 || request.getStars() > 5) {
@@ -124,11 +140,20 @@ public class HotelServiceImpl implements HotelService {
         if (!hotelRepository.existsByCod(request.getCod())) {
             return false;
         }
-        
+
         return true;
-        
+
     }
 
+    /**
+     * Actualiza la información de un hotel en la base de datos
+     * 
+     * @param request Hotel con la infomación actualizada
+     * @return Hotel actualizado
+     * @see HotelDTO
+     * @see Hotel
+     * @see HotelRepository
+     */
     @Override
     public HotelDTO updateHotel(HotelDTO request) {
         Hotel hotelToUpdate = hotelRepository.findByCod(request.getCod());
@@ -136,7 +161,7 @@ public class HotelServiceImpl implements HotelService {
         hotelToUpdate.setName(request.getName());
         hotelRepository.save(hotelToUpdate);
         return request;
-        
+
     }
 
 }

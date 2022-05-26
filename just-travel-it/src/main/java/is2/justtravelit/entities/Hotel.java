@@ -17,11 +17,11 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
+
     private String name;
     private Integer stars;
     private String city;
-    
+
     @Column(unique = true)
     private String cod;
 
@@ -41,10 +41,18 @@ public class Hotel {
     public Hotel() {
     }
 
+    /**
+     * 
+     * @return Código del hotel
+     */
     public String getCod() {
         return cod;
     }
 
+    /**
+     * 
+     * @param cod Nuevo código del hotel
+     */
     public void setCod(String cod) {
         this.cod = cod;
     }

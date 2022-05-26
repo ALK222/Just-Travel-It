@@ -1,7 +1,6 @@
 package is2.justtravelit.services;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Autowired
     HotelService hotelService;
 
-    @Autowired 
+    @Autowired
     FlightService flightService;
 
     /**
@@ -78,10 +77,12 @@ public class ReservationServiceImpl implements ReservationService {
      * @see User
      * @see ReservationDTOToEntityMapper
      * @see ReservationEntityToDTOMapper
+     * @see HotelService
+     * @see FlightService
      */
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
-        
+
         if (hotelService.hotelValidation(request.getHotel()) &&
                 flightService.flightValidation(request.getGoFlight()) &&
                 flightService.flightValidation(request.getReturnFlight())) {
@@ -97,7 +98,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
 
         return null;
-  
+
     }
 
     /**
@@ -120,13 +121,23 @@ public class ReservationServiceImpl implements ReservationService {
         if (reservationToUpdate.isPresent() && reservationModifyValidation(request)) {
             reservationToUpdate.get().setGoFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getGoFlight()));
             reservationToUpdate.get().setHotel(HotelDTOToEntityMapper.mapHotelDTOToHotel(request.getHotel()));
-            reservationToUpdate.get().setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
+            reservationToUpdate.get()
+                    .setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
             reservationRepository.save(reservationToUpdate.get());
             return request;
         }
         return null;
     }
 
+    /**
+     * Valida una reserva para posteriormente modificarla
+     * 
+     * @param request Reserva a validar
+     * @return Si la información es válida o no
+     * @see ReservationDTO
+     * @see HotelService
+     * @see FlightService
+     */
     private boolean reservationModifyValidation(ReservationDTO request) {
 
         if (hotelService.hotelValidation(request.getHotel()) &&
@@ -134,7 +145,6 @@ public class ReservationServiceImpl implements ReservationService {
                 flightService.flightValidation(request.getReturnFlight())) {
             return false;
         }
-        
 
         return true;
     }

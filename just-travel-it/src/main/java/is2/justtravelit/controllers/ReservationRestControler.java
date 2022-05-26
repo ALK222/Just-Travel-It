@@ -25,8 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.ReservationDTO;
 import is2.justtravelit.dtos.UserDTO;
-import is2.justtravelit.entities.User;
-import is2.justtravelit.mappers.UserDTOToEntityMapper;
 import is2.justtravelit.services.ReservationService;
 
 /**
@@ -52,7 +50,7 @@ public class ReservationRestControler {
      */
     @GetMapping("/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@RequestBody UserDTO request) {
-        
+
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
         response = reservationService.getReservationsByUser(request.getNif());
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
@@ -72,7 +70,7 @@ public class ReservationRestControler {
      */
     @PostMapping("/reservations")
     public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
-        
+
         ReservationDTO response = new ReservationDTO();
         response = reservationService.addReservation(request, id);
 
