@@ -15,7 +15,7 @@ import is2.justtravelit.entities.Flight;
  * @see Flight
  */
 @Repository
-public interface FlightRespository extends CrudRepository<Flight, Long> {
+public interface FlightRepository extends CrudRepository<Flight, Long> {
     /**
      * Devuelve un listado con todos los vuelos
      */
@@ -28,5 +28,11 @@ public interface FlightRespository extends CrudRepository<Flight, Long> {
      */
     void deleteById(Long id);
 
+    /**
+     * Comprueba la existencia de un vuelo dado un código
+     * 
+     * @param cod Código del vuelo a comprobar
+     * @return Existe o no existe
+     */
     boolean existsByCodigo(String codigo);
 }

@@ -37,6 +37,12 @@ public interface AirportRepository extends CrudRepository<Airport, Long> {
      */
     Airport findByCod(String cod);
 
+    /**
+     * Comprueba la existencia de un aeropuerto dado un código
+     * 
+     * @param cod Código del aeropuerto a comprobar
+     * @return Existe o no existe
+     */
     boolean existsByCod(String cod);
 
 }

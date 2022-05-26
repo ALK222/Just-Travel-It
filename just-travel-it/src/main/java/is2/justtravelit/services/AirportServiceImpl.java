@@ -96,9 +96,17 @@ public class AirportServiceImpl implements AirportService {
         return request;
     }
 
+    /**
+     * Valida la existencia de un aeropuerto
+     * 
+     * @param request Aeropuerto a validar
+     * @return Si se encuentra en la base de datos o no
+     * @see AirportDTO
+     * @see AirportRepository
+     */
     @Override
     public boolean airportValidation(AirportDTO request) {
-        
+
         if (!airportRepository.existsByCod(request.getCod())) {
             return false;
         }
