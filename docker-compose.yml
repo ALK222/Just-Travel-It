@@ -1,0 +1,37 @@
+version: '2'
+services:
+    webapp:
+        container_name: just-travel-it
+        build:
+            context: just-travel-it
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/todo
+        networks:
+            - puente
+    
+    mysql-just:
+        container_name: mysql-just
+        image: mysql:5.6
+        restart: always
+        networks:
+            - puente
+        environment:
+            - MYSQL_ROOT_PASSWORD=fundasao
+            - MYSQL_DATABASE=justravelit
+        volumes:
+            - db-data:/var/lib/mysql-just
+        ports:
+            - "3307:3306"
+
+        
+volumes:
+    db-data:
+networks:
+    puente:
+        driver: bridge
+                   
+                   
+                   

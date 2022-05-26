@@ -3,231 +3,67 @@
     <con:settings/>
     <con:interface xsi:type="con:RestService" id="afbd1ce1-6668-40c3-9e2e-1e4edfe10e33" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <con:settings/>
-        <con:definitionCache type="TEXT" rootPart=""/>
-        <con:endpoints>
+        
+        <con:definitionCache type="TEXT" rootPart=""/><con:endpoints>
             <con:endpoint>http://localhost:8080</con:endpoint>
         </con:endpoints>
-        <con:resource name="Login" path="/login" id="a8a77acd-b0ec-409f-8a47-221f0322523a">
-            <con:settings/>
-            <con:parameters/>
-            <con:method name="Login 1" id="e1467201-a7c1-4dfa-ac3f-d57156e744d1" method="POST">
-                <con:settings/>
-                <con:parameters/>
-                <con:representation type="FAULT">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:status>415 500</con:status>
-                    <con:params/>
-                    <con:element xmlns:log="http://localhost/login">log:Fault</con:element>
-                </con:representation>
-                <con:representation type="REQUEST">
-                    <con:mediaType>application/x-www-form-urlencoded</con:mediaType>
-                    <con:params/>
-                </con:representation>
-                <con:representation type="REQUEST">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:params/>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>0</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>0</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>202</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:status>202</con:status>
-                    <con:params/>
-                    <con:element xmlns:log="http://localhost/login">log:Response</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType>text/plain;charset=UTF-8</con:mediaType>
-                    <con:status>202</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="FAULT">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>400</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType xsi:nil="true"/>
-                    <con:status>0</con:status>
-                    <con:params/>
-                    <con:element>data</con:element>
-                </con:representation>
-                <con:request name="Request 1" id="e0267cca-a7dd-4566-88e8-3f7289719cf2" mediaType="application/json" postQueryString="false">
-                    <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
-                    </con:settings>
-                    <con:endpoint>http://localhost:8080</con:endpoint>
-                    <con:request>{"name" : "Pikachu", "password" : "w2"}</con:request>
-                    <con:originalUri>http://localhost/login</con:originalUri>
-                    <con:credentials>
-                        <con:authType>No Authorization</con:authType>
-                    </con:credentials>
-                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-                    <con:jmsPropertyConfig/>
-                    <con:parameters/>
-                    <con:parameterOrder/>
-                </con:request>
-            </con:method>
-        </con:resource>
-        <con:resource name="signup" path="/signup" id="3a1e22bb-04df-4519-afe7-cb4375b9661a">
-            <con:settings/>
-            <con:parameters/>
-            <con:method name="Method 1" id="d178e7ce-09a9-44d0-9c14-e8491ecea7ee" method="POST">
-                <con:settings/>
-                <con:parameters/>
-                <con:representation type="FAULT">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:status>404 500</con:status>
-                    <con:params/>
-                    <con:element xmlns:sig="http://localhost/signup">sig:Fault</con:element>
-                </con:representation>
-                <con:representation type="REQUEST">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:params/>
-                </con:representation>
-                <con:representation type="RESPONSE">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:status>202</con:status>
-                    <con:params/>
-                    <con:element xmlns:sig="http://localhost/signup">sig:Response</con:element>
-                </con:representation>
-                <con:request name="Request 1" id="6a2bcda8-a316-45bd-acbf-1f45c36a3cdd" mediaType="application/json" postQueryString="false">
-                    <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
-                    </con:settings>
-                    <con:endpoint>http://localhost:8080</con:endpoint>
-                    <con:request>{"name" : "Alvi", "password" : "1234"}</con:request>
-                    <con:originalUri>http://localhost/signup</con:originalUri>
-                    <con:credentials>
-                        <con:authType>No Authorization</con:authType>
-                    </con:credentials>
-                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-                    <con:jmsPropertyConfig/>
-                    <con:parameters/>
-                </con:request>
-            </con:method>
-        </con:resource>
-        <con:resource name="showusers" path="/showusers" id="ff4b3fc7-fec6-4fa6-83f3-e0a9a49c26f3">
-            <con:settings/>
-            <con:parameters/>
-            <con:method name="Method 1" id="5a708472-6eee-4f83-9e77-7744deb022b3" method="GET">
-                <con:settings/>
-                <con:parameters/>
-                <con:representation type="RESPONSE">
-                    <con:mediaType>application/json</con:mediaType>
-                    <con:status>202</con:status>
-                    <con:params/>
-                    <con:element>Response</con:element>
-                </con:representation>
-                <con:request name="Request 1" id="376e016e-42d9-4ba8-8b46-c12cab17b07b" mediaType="application/json">
-                    <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
-                    </con:settings>
-                    <con:endpoint>http://localhost:8080</con:endpoint>
-                    <con:request/>
-                    <con:originalUri>http://localhost/showusers</con:originalUri>
-                    <con:credentials>
-                        <con:authType>No Authorization</con:authType>
-                    </con:credentials>
-                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-                    <con:jmsPropertyConfig/>
-                    <con:parameters/>
-                </con:request>
-            </con:method>
-        </con:resource>
-    <con:resource name="newpassword" path="/newpassword/123" id="ada26c8f-50e8-4618-86c4-ed5e059c9c2b"><con:settings/><con:parameters/><con:method name="Method 1" id="80775224-4edc-4115-b5b6-c61cc75321a9" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>400</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="2a968eb9-b6dd-4e24-be59-ac3c5f265c52" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{"name" : "Pikachu", "password" : "w2", "newPassword" : "11"}</con:request><con:originalUri>http://localhost/newpassword/123</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="airport" path="/airports" id="d868552c-017b-431e-8488-12ccb3263aa5"><con:settings/><con:parameters/><con:method name="Method 1" id="12891397-d97e-4447-bdd0-d150b4a99b30" method="PUT"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:element xmlns:air="http://localhost/airports">air:Fault</con:element></con:representation><con:request name="Request 1" id="60db33fe-93e9-4faa-87f5-570717111883" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
-	"city" : "Madrid", "cod": "123", "Name" :"a"
-}
-</con:request><con:originalUri>http://localhost/airports</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method></con:resource></con:interface>
+        
+        
+        
+    <con:resource name="airport" path="/airports" id="d868552c-017b-431e-8488-12ccb3263aa5"><con:settings/><con:parameters/><con:method name="Method 1" id="12891397-d97e-4447-bdd0-d150b4a99b30" method="PUT"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:element xmlns:air="http://localhost/airports">air:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element xmlns:air="http://localhost/airports">air:Response</con:element></con:representation><con:request name="Request 1" id="60db33fe-93e9-4faa-87f5-570717111883" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "city": "Salamanca",
+      "cod": "SAL",
+      "name": "Matacano"
+   }</con:request><con:originalUri>http://localhost/airports</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method><con:method name="Method 2" id="9ab9c3ac-2d35-44a3-a726-200459f4cc2e" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="0971b55c-7662-4e77-b6b6-604df90b1070" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/airports</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 3" id="8c625a9b-4a5e-4de9-808a-0e4badfc21f3" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/><con:element xmlns:air="http://localhost/airports">air:Response</con:element></con:representation><con:request name="Request 1" id="42014551-b0b3-4ecf-80f8-4cc3d9de5bcb" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "city": "Salamanca",
+      "cod": "SAL",
+      "name": "Matacan"
+   }</con:request><con:originalUri>http://localhost/airports</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="flights" path="/flights" id="34f6d366-c93c-4e82-aa77-3bfa4c156e13"><con:settings/><con:parameters/><con:method name="Method 1" id="ac28c80b-b930-47b8-a906-f7ccab886a4a" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="6a476dfd-59fa-4d06-8f99-580561d26dae" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/flights</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 2" id="5535dcf1-a18e-44bb-87d1-0a10917e4121" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" id="eb266396-5470-4e04-87d5-4dc96da0b701" mediaType="application/json" postQueryString="false"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 3" id="6ee64ad8-5e95-44bd-8ee1-3b5f63e9af71" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:flig="http://localhost/flights">flig:Fault</con:element></con:representation><con:request name="Request 1" id="cff51e96-97fe-4f0b-89d9-aa65ed144df1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "codigo": "BP3",
+      "fechaSalida": "2021-05-08",
+      "fechaLlegada": "2021-07-08",
+      "aeropuertoSalida":       {
+         "city": "Barcelona",
+         "cod": "PRT",
+         "name": "El Prat"
+      },
+      "aeropuertoLlegada":       {
+         "city": "Paris",
+         "cod": "FRP",
+         "name": "France Port"
+      }
+   }</con:request><con:originalUri>http://localhost/flights</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 4" id="b35715be-dc7f-4bf9-8858-86281f3df03d" method="DELETE"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:flig="http://localhost/flights">flig:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>202</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>202</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="acd88d77-ad51-4e91-95b1-d14f9d235b35" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "codigo": "ML1",
+      "fechaSalida": "2021-05-08",
+      "fechaLlegada": "2021-05-08",
+      "aeropuertoSalida":       {
+         "city": "Madrid",
+         "cod": "BAR",
+         "name": "Barajas"
+      },
+      "aeropuertoLlegada":       {
+         "city": "Londres",
+         "cod": "LON",
+         "name": "Londres Airport"
+      }
+}  </con:request><con:originalUri>http://localhost/flights</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="hotels" path="/hotels" id="263f97b8-1990-4146-bb48-e72ffba5d9ee"><con:settings/><con:parameters/><con:method name="Method 1" id="83f6794c-2ab6-48b6-a002-6ea1048b4d28" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="d4f40019-8f50-48a1-bac5-bfa88c255473" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/hotels</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 2" id="56ba4bbc-180f-4126-97bd-b7ff915ab443" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:hot="http://localhost/hotels">hot:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element xmlns:hot="http://localhost/hotels">hot:Response</con:element></con:representation><con:request name="Request 1" id="987280fb-fbf7-467f-9b82-72f627bf607f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>
+      {
+      "name": "Euroeski",
+      "stars": 3,
+      "city": "Andorra",
+      "cod": 1321
+      }
+</con:request><con:originalUri>http://localhost/hotels</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 3" id="9d5478f6-0fb7-423b-aaec-8d19c8f082be" method="PUT"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>405</con:status><con:params/><con:element xmlns:hot="http://localhost/hotels">hot:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>202</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>202</con:status><con:params/><con:element xmlns:hot="http://localhost/hotels">hot:Response</con:element></con:representation><con:request name="Request 1" id="50ea6fb2-3d90-44be-b53a-b61102cf6980" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "name": "Euroeski",
+      "stars": 3,
+      "city": "Salamanca",
+      "cod": "1321"
+   }</con:request><con:originalUri>http://localhost/hotels</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Method 4" id="bfd3d8d1-31e7-416e-a33f-8ea747bae8d5" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>202</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>202</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="2ebf57cc-b6d2-4be6-94b2-6460454d49d8" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+      "name": "Silver",
+      "stars": 5,
+      "city": "Plateada",
+      "cod": "111"
+   }</con:request><con:originalUri>http://localhost/hotels</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface>
     <con:properties/>
     <con:wssContainer/>
     <con:oAuth2ProfileContainer/>
