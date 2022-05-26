@@ -21,28 +21,34 @@ public class User {
     private String nif;
     private String email;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
+    private List<String> roles;
 
-    public User(){
-        
+    public User() {
+
     }
 
     public User(String name, String nif, String email, String password, String... roles) {
-        
-		this.name = name;
-		this.nif = nif;
-		this.email = email;
-		this.password = password;
-		this.roles = List.of(roles);
-	}
-    
 
+        this.name = name;
+        this.nif = nif;
+        this.email = email;
+        this.password = password;
+        this.roles = List.of(roles);
+    }
+
+    /**
+     * 
+     * @return Roles de un usuario de la aplicación
+     */
     public List<String> getRoles() {
         return roles;
     }
 
+    /**
+     * 
+     * @param roles Listado de roles del usuario
+     */
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
