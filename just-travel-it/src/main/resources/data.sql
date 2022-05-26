@@ -1,3 +1,35 @@
+CREATE TABLE User (
+  name VARCHAR(20)  PRIMARY KEY,
+  password VARCHAR(60) NOT NULL,
+  nif VARCHAR(9) NOT NULL,
+  email VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE Airport (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT ,
+  city VARCHAR(20) NOT NULL,
+  cod VARCHAR(20) NOT NULL,
+  name VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Hotel (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT ,
+  name VARCHAR(20) NOT NULL,
+  stars INTEGER NOT NULL,
+  city VARCHAR(20) NOT NULL,
+  cod INTEGER UNIQUE
+);
+
+CREATE TABLE Flight (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  codigo VARCHAR(20) NOT NULL,
+  aeropuerto_salida_id BIGINT NOT NULL,
+  aeropuerto_llegada_id BIGINT NOT NULL,
+  fecha_salida DATE NOT NULL,
+  fecha_llegada DATE NOT NULL
+  
+);
+
 INSERT INTO User (name, password, nif, email) VALUES
   ('Pikachu', '1234', '00000000A', 'a@gmail.com'),
   ('Bulbasaur', 'root', '11111111B', 'b@gmail.com'),
