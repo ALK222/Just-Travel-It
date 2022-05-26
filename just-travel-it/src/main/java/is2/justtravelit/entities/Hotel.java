@@ -1,5 +1,6 @@
 package is2.justtravelit.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,35 @@ import javax.persistence.Id;
 public class Hotel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    
     private String name;
     private Integer stars;
     private String city;
+    
+    @Column(unique = true)
+    private String cod;
+
+
+    public Hotel(Long id, String name, Integer stars, String city, String cod) {
+        this.id = id;
+        this.name = name;
+        this.stars = stars;
+        this.city = city;
+        this.cod = cod;
+    }
+
+    public Hotel() {
+    }
+
+    public String getCod() {
+        return cod;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
 
     /**
      * @return ID del hotel en la base de datos

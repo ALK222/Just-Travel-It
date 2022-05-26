@@ -15,11 +15,10 @@ import is2.justtravelit.entities.Hotel;
 @Repository
 public interface HotelRespository extends CrudRepository<Hotel, Long> {
 
-    /**
-     * Borra el hotel dado un código de referencia
-     * 
-     * @param id ID del hotel a borrar
-     */
-    void deleteById(Long id);
+    void deleteByCod(String cod);
+
+    Hotel findByCod(String cod);
+
+    boolean existsByCod(String cod);
 
 }

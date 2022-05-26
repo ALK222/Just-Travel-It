@@ -91,9 +91,9 @@ public class HotelRestController {
      * @see RequestBody
      * @see HotelDTO
      */
-    @PutMapping("/hotels/update")
+    @PutMapping("/hotels")
     public ResponseEntity<HotelDTO> updateHotel(@RequestBody HotelDTO request) {
-        HotelDTO response = hotelService.addHotel(request);
+        HotelDTO response = hotelService.updateHotel(request);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }

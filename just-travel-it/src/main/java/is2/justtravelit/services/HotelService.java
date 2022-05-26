@@ -15,4 +15,10 @@ public interface HotelService {
     public HotelDTO addHotel(HotelDTO request);
 
     HotelDTO getHotelById(Long id);
+
+    public Boolean hotelValidation(HotelDTO request);
+
+    public Boolean addHotelValidation(HotelDTO request);
+
+    public HotelDTO updateHotel(HotelDTO request);
 }

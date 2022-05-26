@@ -26,5 +26,7 @@ public interface FlightRespository extends CrudRepository<Flight, Long> {
      * 
      * @param id ID del vuelo a borrar
      */
-    void deleteByID(Long id);
+    void deleteById(Long id);
+
+    boolean existsByCodigo(String codigo);
 }

@@ -17,4 +17,6 @@ public interface FlightService {
 
     FlightDTO getFlightById(Long id);
 
+    Boolean flightValidation(FlightDTO request);
+
 }

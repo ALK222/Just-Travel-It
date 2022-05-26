@@ -58,8 +58,7 @@ public class HotelServiceImpl implements HotelService {
     @Override
     @Transactional
     public HotelDTO deleteHotel(HotelDTO request) {
-        Hotel deletedEntity = HotelDTOToEntityMapper.mapHotelDTOToHotel(request);
-        hotelRepository.deleteById(deletedEntity.getId());
+        hotelRepository.deleteByCod(request.getCod());
         return null;
     }
 
@@ -75,8 +74,12 @@ public class HotelServiceImpl implements HotelService {
      */
     @Override
     public HotelDTO addHotel(HotelDTO request) {
-        hotelRepository.save(HotelDTOToEntityMapper.mapHotelDTOToHotel(request));
-        return request;
+        if (addHotelValidation(request)) {
+            hotelRepository.save(HotelDTOToEntityMapper.mapHotelDTOToHotel(request));
+            return request;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -96,6 +99,44 @@ public class HotelServiceImpl implements HotelService {
         response = hotelRepository.findById(id);
 
         return response.isPresent() ? null : HotelEntityToDTOMapper.mapHotelEntityToHotelDTO(response.get());
+    }
+
+    @Override
+    public Boolean addHotelValidation(HotelDTO request) {
+        
+        if (hotelRepository.findByCod(request.getCod()) != null) {
+            return false;
+        }
+
+        if (request.getStars() == 0 || request.getStars() > 5) {
+            return false;
+        }
+        
+        return true;
+        
+    }
+
+    @Override
+    public Boolean hotelValidation(HotelDTO request) {
+        if (request.getStars() == 0 || request.getStars() > 5) {
+            return false;
+        }
+        if (!hotelRepository.existsByCod(request.getCod())) {
+            return false;
+        }
+        
+        return true;
+        
+    }
+
+    @Override
+    public HotelDTO updateHotel(HotelDTO request) {
+        Hotel hotelToUpdate = hotelRepository.findByCod(request.getCod());
+        hotelToUpdate.setCity(request.getCity());
+        hotelToUpdate.setName(request.getName());
+        hotelRepository.save(hotelToUpdate);
+        return request;
+        
     }
 
 }

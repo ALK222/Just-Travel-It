@@ -21,6 +21,7 @@ public class HotelEntityToDTOMapper {
         dto.setCity(entity.getCity());
         dto.setStars(entity.getStars());
         dto.setName(entity.getName());
+        dto.setCod(entity.getCod());
 
         return dto;
     }

@@ -42,10 +42,11 @@ public class ReservationRestControler {
      */
     @GetMapping("/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations(@RequestBody UserDTO request) {
-        User userEntity = UserDTOToEntityMapper.mapUserDTOToUser(request);
+        
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
-        response = reservationService.getReservationsByUser(userEntity.getNif());
+        response = reservationService.getReservationsByUser(request.getNif());
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+
     }
 
     /**
@@ -61,6 +62,7 @@ public class ReservationRestControler {
      */
     @PostMapping("/reservations")
     public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request, String id) {
+        
         ReservationDTO response = new ReservationDTO();
         response = reservationService.addReservation(request, id);
 

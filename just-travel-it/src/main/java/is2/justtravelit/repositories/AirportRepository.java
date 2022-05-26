@@ -37,4 +37,6 @@ public interface AirportRepository extends CrudRepository<Airport, Long> {
      */
     Airport findByCod(String cod);
 
+    boolean existsByCod(String cod);
+
 }

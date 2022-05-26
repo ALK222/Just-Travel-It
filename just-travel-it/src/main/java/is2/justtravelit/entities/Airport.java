@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String city;
 

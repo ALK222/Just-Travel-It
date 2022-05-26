@@ -1,6 +1,7 @@
 package is2.justtravelit.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    HotelService hotelService;
+
+    @Autowired 
+    FlightService flightService;
 
     /**
      * Busca todas las reservas dado un id de usuario
@@ -74,13 +81,23 @@ public class ReservationServiceImpl implements ReservationService {
      */
     @Override
     public ReservationDTO addReservation(ReservationDTO request, String id) {
-        Reservation reservationToAdd = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
-        User user = userRepository.findByName(id);
+        
+        if (hotelService.hotelValidation(request.getHotel()) &&
+                flightService.flightValidation(request.getGoFlight()) &&
+                flightService.flightValidation(request.getReturnFlight())) {
+            Reservation reservationToAdd = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
+            try {
+                User user = userRepository.findByName(id);
+                reservationToAdd.setUser(user);
+                reservationRepository.save(reservationToAdd);
+                return ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(reservationToAdd);
+            } catch (Exception e) {
+                return null;
+            }
+        }
 
-        reservationToAdd.setUser(user);
-        reservationRepository.save(reservationToAdd);
-
-        return ReservationEntityToDTOMapper.mapReservationEntityToReservationDTO(reservationToAdd);
+        return null;
+  
     }
 
     /**
@@ -100,17 +117,26 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationDTO modifyReservation(ReservationDTO request) {
         Reservation modifiedEntity = ReservationDTOToEntityMapper.mapReservationDTOToReservation(request);
         Optional<Reservation> reservationToUpdate = reservationRepository.findById(modifiedEntity.getId());
-        if (reservationToUpdate.isPresent()) {
-            reservationToUpdate.get().setCanceled(request.isCanceled());
+        if (reservationToUpdate.isPresent() && reservationModifyValidation(request)) {
             reservationToUpdate.get().setGoFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getGoFlight()));
             reservationToUpdate.get().setHotel(HotelDTOToEntityMapper.mapHotelDTOToHotel(request.getHotel()));
-            reservationToUpdate.get()
-                    .setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
-            reservationToUpdate.get().setUser(request.getUser());
+            reservationToUpdate.get().setReturnFlight(FlightDTOToEntityMapper.mapFlightDTOToFlight(request.getReturnFlight()));
             reservationRepository.save(reservationToUpdate.get());
             return request;
         }
         return null;
+    }
+
+    private boolean reservationModifyValidation(ReservationDTO request) {
+
+        if (hotelService.hotelValidation(request.getHotel()) &&
+                flightService.flightValidation(request.getGoFlight()) &&
+                flightService.flightValidation(request.getReturnFlight())) {
+            return false;
+        }
+        
+
+        return true;
     }
 
     /**

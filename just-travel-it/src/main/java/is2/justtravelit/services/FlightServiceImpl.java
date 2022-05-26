@@ -1,6 +1,7 @@
 package is2.justtravelit.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,9 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     FlightRespository flightRepository;
 
+    @Autowired 
+    AirportService airportService;
+
     /**
      * @return Listado de todos los vuelos registrados
      * @see Flight
@@ -36,7 +40,9 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightDTO> getFlights() {
         List<FlightDTO> response = new ArrayList<FlightDTO>();
 
-        for (Flight f : flightRepository.findAll()) {
+        List<Flight> query = flightRepository.findAll();
+        
+        for (Flight f : query) {
             response.add(FlightEntityToDTOMapper.mapFlightToFlightDTO(f));
         }
 
@@ -57,7 +63,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public FlightDTO deleteFlight(FlightDTO request) {
         Flight deletedEntity = FlightDTOToEntityMapper.mapFlightDTOToFlight(request);
-        flightRepository.deleteByID(deletedEntity.getId());
+        flightRepository.deleteById(deletedEntity.getId());
         return null;
     }
 
@@ -93,6 +99,34 @@ public class FlightServiceImpl implements FlightService {
         response = flightRepository.findById(id);
 
         return response.isPresent() ? null : FlightEntityToDTOMapper.mapFlightToFlightDTO(response.get());
+    }
+
+    @Override
+    public Boolean flightValidation(FlightDTO request) {
+
+        if (!flightRepository.existsByCodigo(request.getCodigo())) {
+            return false;
+        }
+
+        if(!airportService.airportValidation(request.getAeropuertoSalida()) || !airportService.airportValidation(request.getAeropuertoLlegada())){
+            return false;
+        }
+        
+        if(request.getAeropuertoSalida() == request.getAeropuertoLlegada()){
+            return false;
+        }
+
+        if (request.getFechaSalida().compareTo(new Date()) < 0) {
+            return false;
+        }
+
+        if (request.getFechaLlegada().compareTo(new Date()) < 0 ||
+                request.getFechaLlegada().compareTo(request.getFechaSalida()) < 0) {
+
+            return false;
+        }
+        
+        return true;
     }
 
 }

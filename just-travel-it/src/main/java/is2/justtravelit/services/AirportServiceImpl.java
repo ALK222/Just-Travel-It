@@ -96,4 +96,13 @@ public class AirportServiceImpl implements AirportService {
         return request;
     }
 
+    @Override
+    public boolean airportValidation(AirportDTO request) {
+        
+        if (!airportRepository.existsByCod(request.getCod())) {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -16,4 +16,6 @@ public interface AirportService {
     public AirportDTO addAirport(AirportDTO request);
 
     public AirportDTO updateAirport(AirportDTO request);
+
+    public boolean airportValidation(AirportDTO aeropuertoSalida);
 }

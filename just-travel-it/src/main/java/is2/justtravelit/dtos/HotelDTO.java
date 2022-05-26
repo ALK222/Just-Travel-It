@@ -7,12 +7,33 @@ public class HotelDTO {
     private String name;
     private Integer stars;
     private String city;
+    private String cod;
+
+    
+
+    public HotelDTO() {
+    }
+
+    public HotelDTO(String name, Integer stars, String city, String cod) {
+        this.name = name;
+        this.stars = stars;
+        this.city = city;
+        this.cod = cod;
+    }
 
     /**
      * @return Nombre del hotel
      */
     public String getName() {
         return this.name;
+    }
+
+    public String getCod() {
+        return cod;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     /**
