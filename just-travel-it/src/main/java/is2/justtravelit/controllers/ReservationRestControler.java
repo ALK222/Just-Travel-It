@@ -1,19 +1,9 @@
 package is2.justtravelit.controllers;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import is2.justtravelit.dtos.ReservationDTO;
-import is2.justtravelit.dtos.UserDTO;
 import is2.justtravelit.services.ReservationService;
 
 /**
@@ -52,9 +41,9 @@ public class ReservationRestControler {
     @GetMapping("/reservations")
     public ResponseEntity<List<ReservationDTO>> getReservations() {
 
-
         List<ReservationDTO> response = new ArrayList<ReservationDTO>();
-        response = reservationService.getReservationsByUser(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+        response = reservationService.getReservationsByUser(
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
 
     }
@@ -74,7 +63,8 @@ public class ReservationRestControler {
     public ResponseEntity<ReservationDTO> addReservation(@PathVariable ReservationDTO request) {
 
         ReservationDTO response = new ReservationDTO();
-        response = reservationService.addReservation(request, SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+        response = reservationService.addReservation(request,
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
 
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
